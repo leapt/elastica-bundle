@@ -29,7 +29,7 @@ services:
             - { name: monolog.logger, channel: elastica }
 
     jmsche_elastica.data_collector:
-        class: Jmsche\jmsche_elastica\DataCollector\ElasticaDataCollector
+        class: Jmsche\ElasticaBundle\DataCollector\ElasticaDataCollector
         arguments: [ @jmsche_elastica.logger ]
         tags:
             - { name: data_collector, template: "JmscheElasticaBundle:Collector:elastica", id: "elastica" }
