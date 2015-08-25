@@ -1,6 +1,6 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\DependencyInjection;
+namespace Jmsche\ElasticaBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class SnowcapElasticaExtension extends Extension
+class JmscheElasticaExtension extends Extension
 {
     /**
      * {@inheritDoc}
@@ -26,7 +26,7 @@ class SnowcapElasticaExtension extends Extension
         $loader->load('services.yml');
 
         foreach (array('indexes', 'config', 'namespace') as $attribute) {
-            $container->setParameter('snowcap_elastica.' . $attribute , $config[$attribute]);
+            $container->setParameter('jmsche_elastica.' . $attribute , $config[$attribute]);
         }
     }
 }

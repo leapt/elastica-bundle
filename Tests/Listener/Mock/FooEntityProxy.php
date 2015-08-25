@@ -1,6 +1,7 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\Tests\Listener\Mock;
+namespace Jmsche\ElasticaBundle\Tests\Listener\Mock;
 
-class FooEntityProxy extends FooEntity {
+class FooEntityProxy extends FooEntity
+{
 }

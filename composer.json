@@ -1,9 +1,9 @@
 {
-    "name": "snowcap/elastica-bundle",
+    "name": "jmsche/elastica-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony SnowcapElasticaBundle",
+    "description": "Symfony JmscheElasticaBundle",
     "keywords": [],
-    "homepage": "https://github.com/snowcap/SnowcapElasticaBundle",
+    "homepage": "https://github.com/jmsche/JmscheElasticaBundle",
     "license": "MIT",
     "authors": [
         {
@@ -34,7 +34,6 @@
         "doctrine/orm": "2.5.*"
     },
     "autoload": {
-        "psr-0": { "Snowcap\\ElasticaBundle": "" }
-    },
-    "target-dir": "Snowcap/ElasticaBundle"
+        "psr-4": { "Jmsche\\ElasticaBundle\\": "" }
+    }
 }

@@ -1,12 +1,12 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\Logger;
+namespace Jmsche\ElasticaBundle\Logger;
 
 use Psr\Log\LoggerInterface;
 
 /**
  * Class ElasticaLogger
- * @package FOS\ElasticaBundle\Logger
+ * @package Jmsche\ElasticaBundle\Logger
  */
 class ElasticaLogger implements LoggerInterface
 {

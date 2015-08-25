@@ -1,15 +1,15 @@
 <?php
 
-namespace Snowcap\ElasticaBundle;
+namespace Jmsche\ElasticaBundle;
 
 use Elastica\Client as BaseClient;
 use Elastica\Request;
-use Snowcap\ElasticaBundle\Logger\ElasticaLogger;
+use Jmsche\ElasticaBundle\Logger\ElasticaLogger;
 use Symfony\Component\Stopwatch\Stopwatch;
 
 /**
  * Class Client
- * @package Snowcap\ElasticaBundle
+ * @package Jmsche\ElasticaBundle
  */
 class Client extends BaseClient
 {
@@ -30,7 +30,7 @@ class Client extends BaseClient
     public function request($path, $method = Request::GET, $data = array(), array $query = array())
     {
         if ($this->stopwatch) {
-            $this->stopwatch->start('es_request', 'snowcap_elastica');
+            $this->stopwatch->start('es_request', 'jmsche_elastica');
         }
         $start = microtime(true);
         $response = parent::request($path, $method, $data, $query);

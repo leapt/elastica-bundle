@@ -1,7 +1,8 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\Tests\Mock;
+namespace Jmsche\ElasticaBundle\Tests\Mock;
 
-class FooEntity {
+class FooEntity
+{
     public $bar;
 } 

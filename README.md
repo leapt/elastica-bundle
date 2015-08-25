@@ -1,4 +1,6 @@
-Snowcap Elastica bundle
-========================
+Jmsche Elastica bundle
+======================
 
-This projet is still a WIP. Don't even think about using it for something serious for the moment.
+This bundle is a fork of the SnowcapAdminBundle: http://github.com/snowcap/SnowcapAdminBundle
+
+More docs to come.

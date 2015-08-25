@@ -1,13 +1,16 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\Paginator;
-
-use Snowcap\CoreBundle\Paginator\AbstractPaginator;
-use Snowcap\ElasticaBundle\Service;
+namespace Jmsche\ElasticaBundle\Paginator;
 
 use Elastica\Query;
 use Elastica\ResultSet;
+use Jmsche\CoreBundle\Paginator\AbstractPaginator;
+use Jmsche\ElasticaBundle\Service;
 
+/**
+ * Class ElasticaPaginator
+ * @package Jmsche\ElasticaBundle\Paginator
+ */
 class ElasticaPaginator extends AbstractPaginator
 {
     /**
@@ -16,7 +19,7 @@ class ElasticaPaginator extends AbstractPaginator
     private $elasticaQuery;
 
     /**
-     * @var \Snowcap\ElasticaBundle\Service
+     * @var \Jmsche\ElasticaBundle\Service
      */
     private $elastica;
 

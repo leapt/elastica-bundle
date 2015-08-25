@@ -1,17 +1,18 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\Tests\Mock;
+namespace Jmsche\ElasticaBundle\Tests\Mock;
 
 use Doctrine\ORM\EntityManager;
 use Elastica\Type;
-use Snowcap\ElasticaBundle\Indexer\IndexerInterface;
+use Jmsche\ElasticaBundle\Indexer\IndexerInterface;
 
 /**
  * Mock indexers for unit tests
  *
- * @package Snowcap\ElasticaBundle\Tests\Mock
+ * @package Jmsche\ElasticaBundle\Tests\Mock
  */
-class FooIndexer implements IndexerInterface {
+class FooIndexer implements IndexerInterface
+{
     /**
      * Return an array of classes managed by this indexer
      * Must at least contain the class name of the main entity you wish to index, and may
@@ -22,7 +23,7 @@ class FooIndexer implements IndexerInterface {
      */
     public function getManagedClasses()
     {
-        return array('Snowcap\ElasticaBundle\Tests\Mock\FooEntity');
+        return array('Jmsche\ElasticaBundle\Tests\Mock\FooEntity');
     }
 
     /**

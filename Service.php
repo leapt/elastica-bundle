@@ -1,18 +1,18 @@
 <?php
 
-namespace Snowcap\ElasticaBundle;
+namespace Jmsche\ElasticaBundle;
 
 use Elastica\Index;
 use Elastica\ResultSet;
 use Elastica\Search;
 use Elastica\Type\Mapping;
-use Snowcap\ElasticaBundle\Indexer\IndexerInterface;
+use Jmsche\ElasticaBundle\Indexer\IndexerInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
 /**
  * This service class is the main entry point for Elastica operations
  *
- * @package Snowcap\ElasticaBundle
+ * @package Jmsche\ElasticaBundle
  */
 class Service extends ContainerAware implements ServiceInterface
 {

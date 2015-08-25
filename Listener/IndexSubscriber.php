@@ -1,22 +1,22 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\Listener;
+namespace Jmsche\ElasticaBundle\Listener;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
-use Snowcap\ElasticaBundle\ServiceInterface;
+use Jmsche\ElasticaBundle\ServiceInterface;
 
 /**
  * This subscriber class listens to Doctrine events and, depending on the registered indexers, automatically
  * triggers index/unindex operations
  *
- * @package Snowcap\ElasticaBundle\Listener
+ * @package Jmsche\ElasticaBundle\Listener
  */
 class IndexSubscriber implements EventSubscriber
 {
     /**
-     * @var \Snowcap\ElasticaBundle\Service
+     * @var \Jmsche\ElasticaBundle\Service
      */
     private $elastica;
 
@@ -36,7 +36,7 @@ class IndexSubscriber implements EventSubscriber
     private $scheduledUnindexations = array();
 
     /**
-     * @param \Snowcap\ElasticaBundle\ServiceInterface $elastica
+     * @param \Jmsche\ElasticaBundle\ServiceInterface $elastica
      */
     public function __construct(ServiceInterface $elastica)
     {

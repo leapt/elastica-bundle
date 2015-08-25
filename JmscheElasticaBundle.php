@@ -1,19 +1,24 @@
 <?php
 
-namespace Snowcap\ElasticaBundle;
+namespace Jmsche\ElasticaBundle;
 
+use Jmsche\ElasticaBundle\DependencyInjection\Compiler\IndexerCompilerPass;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
-use Snowcap\ElasticaBundle\DependencyInjection\Compiler\IndexerCompilerPass;
-
-class SnowcapElasticaBundle extends Bundle
+/**
+ * Class JmscheElasticaBundle
+ * @package Jmsche\ElasticaBundle
+ */
+class JmscheElasticaBundle extends Bundle
 {
+    /**
+     * @param ContainerBuilder $container
+     */
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
 
         $container->addCompilerPass(new IndexerCompilerPass());
     }
-
 }

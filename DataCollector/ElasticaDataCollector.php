@@ -1,20 +1,23 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\DataCollector;
+namespace Jmsche\ElasticaBundle\DataCollector;
 
-use Snowcap\ElasticaBundle\Logger\ElasticaLogger;
+use Jmsche\ElasticaBundle\Logger\ElasticaLogger;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class ElasticaDataCollector
- * @package Snowcap\ElasticaBundle\DataCollector
+ * @package Jmsche\ElasticaBundle\DataCollector
  */
 class ElasticaDataCollector extends DataCollector
 {
     protected $logger;
 
+    /**
+     * @param ElasticaLogger $logger
+     */
     public function __construct(ElasticaLogger $logger)
     {
         $this->logger = $logger;

@@ -1,11 +1,16 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\Indexer;
+namespace Jmsche\ElasticaBundle\Indexer;
 
 use Doctrine\ORM\EntityManager;
 use Elastica\Type;
 
-interface IndexerInterface {
+/**
+ * Interface IndexerInterface
+ * @package Jmsche\ElasticaBundle\Indexer
+ */
+interface IndexerInterface
+{
 
     const ACTION_REMOVE = 'remove';
     const ACTION_ADD = 'add';

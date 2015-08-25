@@ -1,13 +1,13 @@
 <?php
 
-namespace Snowcap\ElasticaBundle;
+namespace Jmsche\ElasticaBundle;
 
-use Snowcap\ElasticaBundle\Indexer\IndexerInterface;
+use Jmsche\ElasticaBundle\Indexer\IndexerInterface;
 
 /**
  * Interface ServiceInterface
  *
- * @package Snowcap\ElasticaBundle
+ * @package Jmsche\ElasticaBundle
  */
 interface ServiceInterface
 {

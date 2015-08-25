@@ -1,12 +1,16 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\Indexer;
+namespace Jmsche\ElasticaBundle\Indexer;
 
 use Doctrine\ORM\EntityManager;
 use Elastica\Document;
 use Elastica\Exception\NotFoundException;
 use Elastica\Type;
 
+/**
+ * Class AbstractIndexer
+ * @package Jmsche\ElasticaBundle\Indexer
+ */
 abstract class AbstractIndexer implements IndexerInterface
 {
 

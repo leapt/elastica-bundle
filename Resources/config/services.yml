@@ -1,35 +1,35 @@
 parameters:
-    snowcap_elastica.indexes: []
-    snowcap_elastica.config: []
+    jmsche_elastica.indexes: []
+    jmsche_elastica.config: []
 
 services:
-    snowcap_elastica.service:
-        class: Snowcap\ElasticaBundle\Service
-        arguments: [@snowcap_elastica.client, %snowcap_elastica.namespace%]
+    jmsche_elastica.service:
+        class: Jmsche\ElasticaBundle\Service
+        arguments: [@jmsche_elastica.client, %jmsche_elastica.namespace%]
         calls:
             - [setContainer, [ @service_container ]]
-            - [setIndexes, [ %snowcap_elastica.indexes% ]]
+            - [setIndexes, [ %jmsche_elastica.indexes% ]]
 
-    snowcap_elastica.client:
-        class: Snowcap\ElasticaBundle\Client
-        arguments: [%snowcap_elastica.config%]
+    jmsche_elastica.client:
+        class: Jmsche\ElasticaBundle\Client
+        arguments: [%jmsche_elastica.config%]
         calls:
-            - [setLogger, [ @snowcap_elastica.logger ]]
+            - [setLogger, [ @jmsche_elastica.logger ]]
 
-    snowcap_elastica.subscriber:
-        class: Snowcap\ElasticaBundle\Listener\IndexSubscriber
-        arguments: [@snowcap_elastica.service]
+    jmsche_elastica.subscriber:
+        class: Jmsche\ElasticaBundle\Listener\IndexSubscriber
+        arguments: [@jmsche_elastica.service]
         tags:
             - { name: doctrine.event_subscriber }
 
-    snowcap_elastica.logger:
-        class: Snowcap\ElasticaBundle\Logger\ElasticaLogger
+    jmsche_elastica.logger:
+        class: Jmsche\ElasticaBundle\Logger\ElasticaLogger
         arguments: [ @logger, %kernel.debug% ]
         tags:
             - { name: monolog.logger, channel: elastica }
 
-    snowcap_elastica.data_collector:
-        class: Snowcap\ElasticaBundle\DataCollector\ElasticaDataCollector
-        arguments: [ @snowcap_elastica.logger ]
+    jmsche_elastica.data_collector:
+        class: Jmsche\jmsche_elastica\DataCollector\ElasticaDataCollector
+        arguments: [ @jmsche_elastica.logger ]
         tags:
-            - { name: data_collector, template: "SnowcapElasticaBundle:Collector:elastica", id: "elastica" }
+            - { name: data_collector, template: "JmscheElasticaBundle:Collector:elastica", id: "elastica" }
