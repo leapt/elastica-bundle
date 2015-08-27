@@ -1,15 +1,15 @@
 <?php
 
-namespace Jmsche\ElasticaBundle\Tests\Listener\Mock;
+namespace Leapt\ElasticaBundle\Tests\Listener\Mock;
 
-use Jmsche\ElasticaBundle\Indexer;
-use Jmsche\ElasticaBundle\Indexer\IndexerInterface;
-use Jmsche\ElasticaBundle\ServiceInterface;
+use Leapt\ElasticaBundle\Indexer;
+use Leapt\ElasticaBundle\Indexer\IndexerInterface;
+use Leapt\ElasticaBundle\ServiceInterface;
 
 /**
  * Mock service class for unit tests
  *
- * @package Jmsche\ElasticaBundle\Tests\Listener\Mock
+ * @package Leapt\ElasticaBundle\Tests\Listener\Mock
  */
 class Service implements ServiceInterface
 {

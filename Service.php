@@ -1,18 +1,18 @@
 <?php
 
-namespace Jmsche\ElasticaBundle;
+namespace Leapt\ElasticaBundle;
 
 use Elastica\Index;
 use Elastica\ResultSet;
 use Elastica\Search;
 use Elastica\Type\Mapping;
-use Jmsche\ElasticaBundle\Indexer\IndexerInterface;
+use Leapt\ElasticaBundle\Indexer\IndexerInterface;
 use Symfony\Component\DependencyInjection\ContainerAware;
 
 /**
  * This service class is the main entry point for Elastica operations
  *
- * @package Jmsche\ElasticaBundle
+ * @package Leapt\ElasticaBundle
  */
 class Service extends ContainerAware implements ServiceInterface
 {

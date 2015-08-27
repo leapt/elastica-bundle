@@ -1,16 +1,16 @@
 <?php
 
-namespace Jmsche\ElasticaBundle;
+namespace Leapt\ElasticaBundle;
 
-use Jmsche\ElasticaBundle\DependencyInjection\Compiler\IndexerCompilerPass;
+use Leapt\ElasticaBundle\DependencyInjection\Compiler\IndexerCompilerPass;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
- * Class JmscheElasticaBundle
- * @package Jmsche\ElasticaBundle
+ * Class LeaptElasticaBundle
+ * @package Leapt\ElasticaBundle
  */
-class JmscheElasticaBundle extends Bundle
+class LeaptElasticaBundle extends Bundle
 {
     /**
      * @param ContainerBuilder $container

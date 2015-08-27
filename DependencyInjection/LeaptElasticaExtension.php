@@ -1,6 +1,6 @@
 <?php
 
-namespace Jmsche\ElasticaBundle\DependencyInjection;
+namespace Leapt\ElasticaBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  *
  * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
  */
-class JmscheElasticaExtension extends Extension
+class LeaptElasticaExtension extends Extension
 {
     /**
      * {@inheritDoc}
@@ -26,7 +26,7 @@ class JmscheElasticaExtension extends Extension
         $loader->load('services.yml');
 
         foreach (array('indexes', 'config', 'namespace') as $attribute) {
-            $container->setParameter('jmsche_elastica.' . $attribute , $config[$attribute]);
+            $container->setParameter('leapt_elastica.' . $attribute , $config[$attribute]);
         }
     }
 }

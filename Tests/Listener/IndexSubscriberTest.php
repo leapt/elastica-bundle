@@ -1,18 +1,18 @@
 <?php
 
-namespace Jmsche\ElasticaBundle\Tests\Listener;
+namespace Leapt\ElasticaBundle\Tests\Listener;
 
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
-use Jmsche\ElasticaBundle\Listener\IndexSubscriber;
-use Jmsche\ElasticaBundle\Tests\Listener\Mock\BarEntity;
-use Jmsche\ElasticaBundle\Tests\Listener\Mock\BazEntity;
-use Jmsche\ElasticaBundle\Tests\Listener\Mock\FooEntity;
-use Jmsche\ElasticaBundle\Tests\Listener\Mock\FooEntityProxy;
+use Leapt\ElasticaBundle\Listener\IndexSubscriber;
+use Leapt\ElasticaBundle\Tests\Listener\Mock\BarEntity;
+use Leapt\ElasticaBundle\Tests\Listener\Mock\BazEntity;
+use Leapt\ElasticaBundle\Tests\Listener\Mock\FooEntity;
+use Leapt\ElasticaBundle\Tests\Listener\Mock\FooEntityProxy;
 
 /**
  * Class IndexSubscriberTest
- * @package Jmsche\ElasticaBundle\Tests\Listener
+ * @package Leapt\ElasticaBundle\Tests\Listener
  */
 class IndexSubscriberTest extends \PHPUnit_Framework_TestCase
 {
@@ -21,7 +21,7 @@ class IndexSubscriberTest extends \PHPUnit_Framework_TestCase
         $em = $this->getMock('Doctrine\ORM\EntityManager', [], [], '', false);
         $foo = new FooEntity();
 
-        $service = $this->getMock('Jmsche\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
+        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
         $service
             ->expects($this->once())
             ->method('index')
@@ -41,7 +41,7 @@ class IndexSubscriberTest extends \PHPUnit_Framework_TestCase
         $em = $this->getMock('Doctrine\ORM\EntityManager', [], [], '', false);
         $baz  = new BazEntity();
 
-        $service = $this->getMock('Jmsche\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
+        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
         $service
             ->expects($this->once())
             ->method('index')
@@ -61,7 +61,7 @@ class IndexSubscriberTest extends \PHPUnit_Framework_TestCase
         $em = $this->getMock('Doctrine\ORM\EntityManager', [], [], '', false);
         $foo = new FooEntity();
 
-        $service = $this->getMock('Jmsche\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
+        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
         $service
             ->expects($this->once())
             ->method('index')
@@ -83,7 +83,7 @@ class IndexSubscriberTest extends \PHPUnit_Framework_TestCase
         $em = $this->getMock('Doctrine\ORM\EntityManager', [], [], '', false);
         $foo = new FooEntityProxy();
 
-        $service = $this->getMock('Jmsche\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
+        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
         $service
             ->expects($this->once())
             ->method('index')
@@ -103,7 +103,7 @@ class IndexSubscriberTest extends \PHPUnit_Framework_TestCase
         $em = $this->getMock('Doctrine\ORM\EntityManager', [], [], '', false);
         $foo = new BarEntity();
 
-        $service = $this->getMock('Jmsche\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
+        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
         $service
             ->expects($this->never())
             ->method('index');
@@ -122,7 +122,7 @@ class IndexSubscriberTest extends \PHPUnit_Framework_TestCase
         $em = $this->getMock('Doctrine\ORM\EntityManager', [], [], '', false);
         $foo = new FooEntity();
 
-        $service = $this->getMock('Jmsche\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
+        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
         $service
             ->expects($this->once())
             ->method('index')
@@ -142,7 +142,7 @@ class IndexSubscriberTest extends \PHPUnit_Framework_TestCase
         $em = $this->getMock('Doctrine\ORM\EntityManager', [], [], '', false);
         $foo = new FooEntity();
 
-        $service = $this->getMock('Jmsche\ElasticaBundle\Tests\Listener\Mock\Service', ['indexRemove']);
+        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', ['indexRemove']);
         $service
             ->expects($this->once())
             ->method('indexRemove')

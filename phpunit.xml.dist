@@ -2,7 +2,7 @@
 
 <phpunit bootstrap="Tests/bootstrap.php">
     <testsuites>
-        <testsuite name="JmscheElasticaBundle Test Suite">
+        <testsuite name="LeaptElasticaBundle Test Suite">
             <directory>./Tests/</directory>
         </testsuite>
     </testsuites>

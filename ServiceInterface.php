@@ -1,13 +1,13 @@
 <?php
 
-namespace Jmsche\ElasticaBundle;
+namespace Leapt\ElasticaBundle;
 
-use Jmsche\ElasticaBundle\Indexer\IndexerInterface;
+use Leapt\ElasticaBundle\Indexer\IndexerInterface;
 
 /**
  * Interface ServiceInterface
  *
- * @package Jmsche\ElasticaBundle
+ * @package Leapt\ElasticaBundle
  */
 interface ServiceInterface
 {

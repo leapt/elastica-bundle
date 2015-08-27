@@ -1,15 +1,15 @@
 <?php
 
-namespace Jmsche\ElasticaBundle\Tests\Mock;
+namespace Leapt\ElasticaBundle\Tests\Mock;
 
 use Doctrine\ORM\EntityManager;
 use Elastica\Type;
-use Jmsche\ElasticaBundle\Indexer\IndexerInterface;
+use Leapt\ElasticaBundle\Indexer\IndexerInterface;
 
 /**
  * Mock indexers for unit tests
  *
- * @package Jmsche\ElasticaBundle\Tests\Mock
+ * @package Leapt\ElasticaBundle\Tests\Mock
  */
 class FooIndexer implements IndexerInterface
 {
@@ -23,7 +23,7 @@ class FooIndexer implements IndexerInterface
      */
     public function getManagedClasses()
     {
-        return array('Jmsche\ElasticaBundle\Tests\Mock\FooEntity');
+        return array('Leapt\ElasticaBundle\Tests\Mock\FooEntity');
     }
 
     /**

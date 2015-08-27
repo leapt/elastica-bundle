@@ -1,9 +1,9 @@
 {
-    "name": "jmsche/elastica-bundle",
+    "name": "leapt/elastica-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony JmscheElasticaBundle",
+    "description": "Symfony LeaptElasticaBundle",
     "keywords": [],
-    "homepage": "https://github.com/jmsche/JmscheElasticaBundle",
+    "homepage": "https://github.com/leapt/elastica-bundle",
     "license": "MIT",
     "authors": [
         {
@@ -34,6 +34,6 @@
         "doctrine/orm": "2.5.*"
     },
     "autoload": {
-        "psr-4": { "Jmsche\\ElasticaBundle\\": "" }
+        "psr-4": { "Leapt\\ElasticaBundle\\": "" }
     }
 }

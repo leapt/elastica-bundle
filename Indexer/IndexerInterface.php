@@ -1,13 +1,13 @@
 <?php
 
-namespace Jmsche\ElasticaBundle\Indexer;
+namespace Leapt\ElasticaBundle\Indexer;
 
 use Doctrine\ORM\EntityManager;
 use Elastica\Type;
 
 /**
  * Interface IndexerInterface
- * @package Jmsche\ElasticaBundle\Indexer
+ * @package Leapt\ElasticaBundle\Indexer
  */
 interface IndexerInterface
 {

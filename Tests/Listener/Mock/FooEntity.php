@@ -1,6 +1,6 @@
 <?php
 
-namespace Jmsche\ElasticaBundle\Tests\Listener\Mock;
+namespace Leapt\ElasticaBundle\Tests\Listener\Mock;
 
 class FooEntity
 {

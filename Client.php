@@ -1,15 +1,15 @@
 <?php
 
-namespace Jmsche\ElasticaBundle;
+namespace Leapt\ElasticaBundle;
 
 use Elastica\Client as BaseClient;
 use Elastica\Request;
-use Jmsche\ElasticaBundle\Logger\ElasticaLogger;
+use Leapt\ElasticaBundle\Logger\ElasticaLogger;
 use Symfony\Component\Stopwatch\Stopwatch;
 
 /**
  * Class Client
- * @package Jmsche\ElasticaBundle
+ * @package Leapt\ElasticaBundle
  */
 class Client extends BaseClient
 {
@@ -30,7 +30,7 @@ class Client extends BaseClient
     public function request($path, $method = Request::GET, $data = array(), array $query = array())
     {
         if ($this->stopwatch) {
-            $this->stopwatch->start('es_request', 'jmsche_elastica');
+            $this->stopwatch->start('es_request', 'leapt_elastica');
         }
         $start = microtime(true);
         $response = parent::request($path, $method, $data, $query);

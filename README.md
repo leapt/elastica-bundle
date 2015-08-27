@@ -1,4 +1,4 @@
-Jmsche Elastica bundle
+Leapt Elastica bundle
 ======================
 
 This bundle is a fork of the SnowcapElastica Bundle: http://github.com/snowcap/SnowcapElasticaBundle

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jmsche\ElasticaBundle\DependencyInjection;
+namespace Leapt\ElasticaBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('jmsche_elastica');
+        $rootNode = $treeBuilder->root('leapt_elastica');
         $rootNode
             ->children()
                 ->arrayNode('config')

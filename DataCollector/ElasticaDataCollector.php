@@ -1,15 +1,15 @@
 <?php
 
-namespace Jmsche\ElasticaBundle\DataCollector;
+namespace Leapt\ElasticaBundle\DataCollector;
 
-use Jmsche\ElasticaBundle\Logger\ElasticaLogger;
+use Leapt\ElasticaBundle\Logger\ElasticaLogger;
 use Symfony\Component\HttpKernel\DataCollector\DataCollector;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class ElasticaDataCollector
- * @package Jmsche\ElasticaBundle\DataCollector
+ * @package Leapt\ElasticaBundle\DataCollector
  */
 class ElasticaDataCollector extends DataCollector
 {

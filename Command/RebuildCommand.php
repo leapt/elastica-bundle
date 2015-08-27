@@ -1,6 +1,6 @@
 <?php
 
-namespace Jmsche\ElasticaBundle\Command;
+namespace Leapt\ElasticaBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
@@ -9,14 +9,14 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * Class RebuildCommand
- * @package Jmsche\ElasticaBundle\Command
+ * @package Leapt\ElasticaBundle\Command
  */
 class RebuildCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-            ->setName('jmsche:elastica:rebuild')
+            ->setName('leapt:elastica:rebuild')
             ->setDescription('Rebuild all elastica indexes')
             ->addArgument('types', InputArgument::IS_ARRAY + InputArgument::OPTIONAL, 'Specific types to rebuild')
         ;
@@ -30,7 +30,7 @@ class RebuildCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $timeStart = microtime(true);
-        $elastica = $this->getContainer()->get('jmsche_elastica.service');
+        $elastica = $this->getContainer()->get('leapt_elastica.service');
 
         // Rebuild only given types
         if ($input->hasArgument('types') && 0 < count($input->getArgument('types'))) {

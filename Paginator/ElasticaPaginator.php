@@ -1,15 +1,15 @@
 <?php
 
-namespace Jmsche\ElasticaBundle\Paginator;
+namespace Leapt\ElasticaBundle\Paginator;
 
 use Elastica\Query;
 use Elastica\ResultSet;
-use Jmsche\CoreBundle\Paginator\AbstractPaginator;
-use Jmsche\ElasticaBundle\Service;
+use Leapt\ElasticaBundle\Service;
+use Snowcap\CoreBundle\Paginator\AbstractPaginator;
 
 /**
  * Class ElasticaPaginator
- * @package Jmsche\ElasticaBundle\Paginator
+ * @package Leapt\ElasticaBundle\Paginator
  */
 class ElasticaPaginator extends AbstractPaginator
 {
@@ -19,7 +19,7 @@ class ElasticaPaginator extends AbstractPaginator
     private $elasticaQuery;
 
     /**
-     * @var \Jmsche\ElasticaBundle\Service
+     * @var \Leapt\ElasticaBundle\Service
      */
     private $elastica;
 

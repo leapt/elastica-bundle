@@ -1,35 +1,35 @@
 parameters:
-    jmsche_elastica.indexes: []
-    jmsche_elastica.config: []
+    leapt_elastica.indexes: []
+    leapt_elastica.config: []
 
 services:
-    jmsche_elastica.service:
-        class: Jmsche\ElasticaBundle\Service
-        arguments: [@jmsche_elastica.client, %jmsche_elastica.namespace%]
+    leapt_elastica.service:
+        class: Leapt\ElasticaBundle\Service
+        arguments: [@leapt_elastica.client, %leapt_elastica.namespace%]
         calls:
             - [setContainer, [ @service_container ]]
-            - [setIndexes, [ %jmsche_elastica.indexes% ]]
+            - [setIndexes, [ %leapt_elastica.indexes% ]]
 
-    jmsche_elastica.client:
-        class: Jmsche\ElasticaBundle\Client
-        arguments: [%jmsche_elastica.config%]
+    leapt_elastica.client:
+        class: Leapt\ElasticaBundle\Client
+        arguments: [%leapt_elastica.config%]
         calls:
-            - [setLogger, [ @jmsche_elastica.logger ]]
+            - [setLogger, [ @leapt_elastica.logger ]]
 
-    jmsche_elastica.subscriber:
-        class: Jmsche\ElasticaBundle\Listener\IndexSubscriber
-        arguments: [@jmsche_elastica.service]
+    leapt_elastica.subscriber:
+        class: Leapt\ElasticaBundle\Listener\IndexSubscriber
+        arguments: [@leapt_elastica.service]
         tags:
             - { name: doctrine.event_subscriber }
 
-    jmsche_elastica.logger:
-        class: Jmsche\ElasticaBundle\Logger\ElasticaLogger
+    leapt_elastica.logger:
+        class: Leapt\ElasticaBundle\Logger\ElasticaLogger
         arguments: [ @logger, %kernel.debug% ]
         tags:
             - { name: monolog.logger, channel: elastica }
 
-    jmsche_elastica.data_collector:
-        class: Jmsche\ElasticaBundle\DataCollector\ElasticaDataCollector
-        arguments: [ @jmsche_elastica.logger ]
+    leapt_elastica.data_collector:
+        class: Leapt\ElasticaBundle\DataCollector\ElasticaDataCollector
+        arguments: [ @leapt_elastica.logger ]
         tags:
-            - { name: data_collector, template: "JmscheElasticaBundle:Collector:elastica", id: "elastica" }
+            - { name: data_collector, template: "LeaptElasticaBundle:Collector:elastica", id: "elastica" }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Jmsche\ElasticaBundle\Indexer;
+namespace Leapt\ElasticaBundle\Indexer;
 
 use Doctrine\ORM\EntityManager;
 use Elastica\Document;
@@ -9,7 +9,7 @@ use Elastica\Type;
 
 /**
  * Class AbstractIndexer
- * @package Jmsche\ElasticaBundle\Indexer
+ * @package Leapt\ElasticaBundle\Indexer
  */
 abstract class AbstractIndexer implements IndexerInterface
 {

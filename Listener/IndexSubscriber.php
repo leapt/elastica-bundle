@@ -1,22 +1,22 @@
 <?php
 
-namespace Jmsche\ElasticaBundle\Listener;
+namespace Leapt\ElasticaBundle\Listener;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\PostFlushEventArgs;
-use Jmsche\ElasticaBundle\ServiceInterface;
+use Leapt\ElasticaBundle\ServiceInterface;
 
 /**
  * This subscriber class listens to Doctrine events and, depending on the registered indexers, automatically
  * triggers index/unindex operations
  *
- * @package Jmsche\ElasticaBundle\Listener
+ * @package Leapt\ElasticaBundle\Listener
  */
 class IndexSubscriber implements EventSubscriber
 {
     /**
-     * @var \Jmsche\ElasticaBundle\Service
+     * @var \Leapt\ElasticaBundle\Service
      */
     private $elastica;
 
@@ -36,7 +36,7 @@ class IndexSubscriber implements EventSubscriber
     private $scheduledUnindexations = array();
 
     /**
-     * @param \Jmsche\ElasticaBundle\ServiceInterface $elastica
+     * @param \Leapt\ElasticaBundle\ServiceInterface $elastica
      */
     public function __construct(ServiceInterface $elastica)
     {

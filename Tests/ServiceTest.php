@@ -1,20 +1,20 @@
 <?php
 
-namespace Jmsche\ElasticaBundle\Tests;
+namespace Leapt\ElasticaBundle\Tests;
 
-use Jmsche\ElasticaBundle\Service;
-use Jmsche\ElasticaBundle\Tests\Mock\BarIndexer;
-use Jmsche\ElasticaBundle\Tests\Mock\FooIndexer;
+use Leapt\ElasticaBundle\Service;
+use Leapt\ElasticaBundle\Tests\Mock\BarIndexer;
+use Leapt\ElasticaBundle\Tests\Mock\FooIndexer;
 
 /**
  * Class ServiceTest
- * @package Jmsche\ElasticaBundle\Tests
+ * @package Leapt\ElasticaBundle\Tests
  */
 class ServiceTest extends \PHPUnit_Framework_TestCase
 {
     public function testRegisterIndexerWithValidManagedClass()
     {
-        $mockClient = $this->getMock('Jmsche\ElasticaBundle\Client', [], [], '', false);
+        $mockClient = $this->getMock('Leapt\ElasticaBundle\Client', [], [], '', false);
         $service = new Service($mockClient, 'plop');
 
         $service->registerIndexer('foo', new FooIndexer());
@@ -26,7 +26,7 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
      */
     public function testRegisterIndexerWithInvalidManagedClass()
     {
-        $mockClient = $this->getMock('Jmsche\ElasticaBundle\Client', [], [], '', false);
+        $mockClient = $this->getMock('Leapt\ElasticaBundle\Client', [], [], '', false);
         $service = new Service($mockClient, 'plop');
 
         $service->registerIndexer('bar', new BarIndexer());

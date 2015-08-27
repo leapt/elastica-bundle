@@ -1,12 +1,12 @@
 <?php
 
-namespace Jmsche\ElasticaBundle\Logger;
+namespace Leapt\ElasticaBundle\Logger;
 
 use Psr\Log\LoggerInterface;
 
 /**
  * Class ElasticaLogger
- * @package Jmsche\ElasticaBundle\Logger
+ * @package Leapt\ElasticaBundle\Logger
  */
 class ElasticaLogger implements LoggerInterface
 {
