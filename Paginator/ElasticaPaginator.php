@@ -4,8 +4,8 @@ namespace Leapt\ElasticaBundle\Paginator;
 
 use Elastica\Query;
 use Elastica\ResultSet;
+use Leapt\CoreBundle\Paginator\AbstractPaginator;
 use Leapt\ElasticaBundle\Service;
-use Snowcap\CoreBundle\Paginator\AbstractPaginator;
 
 /**
  * Class ElasticaPaginator
@@ -58,7 +58,7 @@ class ElasticaPaginator extends AbstractPaginator
 
     /**
      * @param int $page
-     * @return $this|\Snowcap\CoreBundle\Paginator\PaginatorInterface
+     * @return $this|\Leapt\CoreBundle\Paginator\PaginatorInterface
      * @throws \InvalidArgumentException
      */
     public function setPage($page)
