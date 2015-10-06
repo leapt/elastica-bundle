@@ -1,19 +1,20 @@
 parameters:
-    snowcap_elastica.indexes: []
-    snowcap_elastica.config: []
+    leapt_elastica
+    .indexes: []
+    leapt_elastica.config: []
 
 services:
-    snowcap_elastica.service:
-        class: Snowcap\ElasticaBundle\Service
-        arguments: [@snowcap_elastica.client, %snowcap_elastica.namespace%]
+    leapt_elastica.service:
+        class: Leapt\ElasticaBundle\Service
+        arguments: [@leapt_elastica.client, %leapt_elastica.namespace%]
         calls:
             - [setContainer, [ @service_container ]]
-            - [setIndexes, [ %snowcap_elastica.indexes% ]]
-    snowcap_elastica.client:
-        class: Snowcap\ElasticaBundle\Client
-        arguments: [%snowcap_elastica.config%]
-    snowcap_elastica.subscriber:
-        class: Snowcap\ElasticaBundle\Listener\IndexSubscriber
-        arguments: [@snowcap_elastica.service]
+            - [setIndexes, [ %leapt_elastica.indexes% ]]
+    leapt_elastica.client:
+        class: Leapt\ElasticaBundle\Client
+        arguments: [%leapt_elastica.config%]
+    leapt_elastica.subscriber:
+        class: Leapt\ElasticaBundle\Listener\IndexSubscriber
+        arguments: [@leapt_elastica.service]
         tags:
             - { name: doctrine.event_subscriber }

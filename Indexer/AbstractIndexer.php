@@ -1,6 +1,6 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\Indexer;
+namespace Leapt\ElasticaBundle\Indexer;
 
 use Doctrine\ORM\EntityManager;
 use Elastica\Document;

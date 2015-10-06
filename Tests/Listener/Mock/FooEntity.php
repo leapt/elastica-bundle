@@ -1,6 +1,6 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\Tests\Listener\Mock;
+namespace Leapt\ElasticaBundle\Tests\Listener\Mock;
 
 class FooEntity {
     public $bar;

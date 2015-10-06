@@ -1,6 +1,6 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\DependencyInjection\Compiler;
+namespace Leapt\ElasticaBundle\DependencyInjection\Compiler;
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -15,11 +15,11 @@ class IndexerCompilerPass implements CompilerPassInterface
      */
     function process(ContainerBuilder $container)
     {
-        if (false === $container->hasDefinition('snowcap_elastica.service')) {
+        if (false === $container->hasDefinition('leapt_elastica.service')) {
             return;
         }
-        $definition = $container->getDefinition('snowcap_elastica.service');
-        foreach ($container->findTaggedServiceIds('snowcap_elastica.indexer') as $serviceId => $tag) {
+        $definition = $container->getDefinition('leapt_elastica.service');
+        foreach ($container->findTaggedServiceIds('leapt_elastica.indexer') as $serviceId => $tag) {
             $alias = isset($tag[0]['alias'])
                 ? $tag[0]['alias']
                 : $serviceId;

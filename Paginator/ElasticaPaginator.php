@@ -1,9 +1,9 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\Paginator;
+namespace Leapt\ElasticaBundle\Paginator;
 
-use Snowcap\CoreBundle\Paginator\AbstractPaginator;
-use Snowcap\ElasticaBundle\Service;
+use Leapt\CoreBundle\Paginator\AbstractPaginator;
+use Leapt\ElasticaBundle\Service;
 
 use Elastica\Query;
 use Elastica\ResultSet;
@@ -16,7 +16,7 @@ class ElasticaPaginator extends AbstractPaginator
     private $elasticaQuery;
 
     /**
-     * @var \Snowcap\ElasticaBundle\Service
+     * @var \Leapt\ElasticaBundle\Service
      */
     private $elastica;
 
@@ -55,7 +55,7 @@ class ElasticaPaginator extends AbstractPaginator
 
     /**
      * @param int $page
-     * @return $this|\Snowcap\CoreBundle\Paginator\PaginatorInterface
+     * @return $this|\Leapt\CoreBundle\Paginator\PaginatorInterface
      * @throws \InvalidArgumentException
      */
     public function setPage($page)

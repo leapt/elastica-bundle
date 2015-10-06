@@ -1,15 +1,15 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\Tests\Mock;
+namespace Leapt\ElasticaBundle\Tests\Mock;
 
 use Doctrine\ORM\EntityManager;
 use Elastica\Type;
-use Snowcap\ElasticaBundle\Indexer\IndexerInterface;
+use Leapt\ElasticaBundle\Indexer\IndexerInterface;
 
 /**
  * Mock indexers for unit tests
  *
- * @package Snowcap\ElasticaBundle\Tests\Mock
+ * @package Leapt\ElasticaBundle\Tests\Mock
  */
 class BarIndexer implements IndexerInterface {
     /**
@@ -22,7 +22,7 @@ class BarIndexer implements IndexerInterface {
      */
     public function getManagedClasses()
     {
-        return array('Snowcap\ElasticaBundle\Tests\Mock\BarEntity');
+        return array('Leapt\ElasticaBundle\Tests\Mock\BarEntity');
     }
 
     /**

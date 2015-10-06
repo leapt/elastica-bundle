@@ -1,6 +1,6 @@
 <?php
 
-namespace Snowcap\ElasticaBundle;
+namespace Leapt\ElasticaBundle;
 
 use Elastica\Client as BaseClient;
 

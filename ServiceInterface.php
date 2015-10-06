@@ -1,13 +1,13 @@
 <?php
 
-namespace Snowcap\ElasticaBundle;
+namespace Leapt\ElasticaBundle;
 
-use Snowcap\ElasticaBundle\Indexer\IndexerInterface;
+use Leapt\ElasticaBundle\Indexer\IndexerInterface;
 
 /**
  * Interface ServiceInterface
  *
- * @package Snowcap\ElasticaBundle
+ * @package Leapt\ElasticaBundle
  */
 interface ServiceInterface
 {

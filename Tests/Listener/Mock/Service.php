@@ -1,16 +1,16 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\Tests\Listener\Mock;
+namespace Leapt\ElasticaBundle\Tests\Listener\Mock;
 
 
-use Snowcap\ElasticaBundle\Indexer;
-use Snowcap\ElasticaBundle\Indexer\IndexerInterface;
-use Snowcap\ElasticaBundle\ServiceInterface;
+use Leapt\ElasticaBundle\Indexer;
+use Leapt\ElasticaBundle\Indexer\IndexerInterface;
+use Leapt\ElasticaBundle\ServiceInterface;
 
 /**
  * Mock service class for unit tests
  *
- * @package Snowcap\ElasticaBundle\Tests\Listener\Mock
+ * @package Leapt\ElasticaBundle\Tests\Listener\Mock
  */
 class Service implements ServiceInterface {
     /**

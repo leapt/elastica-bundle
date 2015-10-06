@@ -1,16 +1,16 @@
 <?php
 
-namespace Snowcap\ElasticaBundle\Tests;
+namespace Leapt\ElasticaBundle\Tests;
 
-use Snowcap\ElasticaBundle\Service;
-use Snowcap\ElasticaBundle\Tests\Mock\BarIndexer;
-use Snowcap\ElasticaBundle\Tests\Mock\FooIndexer;
+use Leapt\ElasticaBundle\Service;
+use Leapt\ElasticaBundle\Tests\Mock\BarIndexer;
+use Leapt\ElasticaBundle\Tests\Mock\FooIndexer;
 
 class ServiceTest extends \PHPUnit_Framework_TestCase
 {
     public function testRegisterIndexerWithValidManagedClass()
     {
-        $mockClient = $this->getMock('Snowcap\ElasticaBundle\Client', [], [], '', false);
+        $mockClient = $this->getMock('Leapt\ElasticaBundle\Client', [], [], '', false);
         $service = new Service($mockClient, 'plop');
 
         $service->registerIndexer('foo', new FooIndexer());
@@ -22,7 +22,7 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
      */
     public function testRegisterIndexerWithInvalidManagedClass()
     {
-        $mockClient = $this->getMock('Snowcap\ElasticaBundle\Client', [], [], '', false);
+        $mockClient = $this->getMock('Leapt\ElasticaBundle\Client', [], [], '', false);
         $service = new Service($mockClient, 'plop');
 
         $service->registerIndexer('bar', new BarIndexer());
