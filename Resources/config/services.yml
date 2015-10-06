@@ -1,6 +1,5 @@
 parameters:
-    leapt_elastica
-    .indexes: []
+    leapt_elastica.indexes: []
     leapt_elastica.config: []
 
 services:
