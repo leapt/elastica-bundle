@@ -14,10 +14,10 @@ class IndexSubscriberTest extends \PHPUnit_Framework_TestCase
 {
     public function testRelevantEntityIsIndexedWhenPersisted()
     {
-        $em = $this->getMock('Doctrine\ORM\EntityManager', [], [], '', false);
+        $em = $this->getMock('Doctrine\ORM\EntityManager', array(), array(), '', false);
         $foo = new FooEntity();
 
-        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
+        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', array('index'));
         $service
             ->expects($this->once())
             ->method('index')
@@ -34,10 +34,10 @@ class IndexSubscriberTest extends \PHPUnit_Framework_TestCase
 
     public function testLowercaseRelevantEntityIsIndexedWhenPersisted()
     {
-        $em = $this->getMock('Doctrine\ORM\EntityManager', [], [], '', false);
+        $em = $this->getMock('Doctrine\ORM\EntityManager', array(), array(), '', false);
         $baz  = new BazEntity();
 
-        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
+        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', array('index'));
         $service
             ->expects($this->once())
             ->method('index')
@@ -54,10 +54,10 @@ class IndexSubscriberTest extends \PHPUnit_Framework_TestCase
 
     public function testRelevantEntityIsIndexedOnlyOnceWhenPersisted()
     {
-        $em = $this->getMock('Doctrine\ORM\EntityManager', [], [], '', false);
+        $em = $this->getMock('Doctrine\ORM\EntityManager', array(), array(), '', false);
         $foo = new FooEntity();
 
-        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
+        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', array('index'));
         $service
             ->expects($this->once())
             ->method('index')
@@ -76,10 +76,10 @@ class IndexSubscriberTest extends \PHPUnit_Framework_TestCase
 
     public function testRelevantEntityProxyIsIndexedWhenPersisted()
     {
-        $em = $this->getMock('Doctrine\ORM\EntityManager', [], [], '', false);
+        $em = $this->getMock('Doctrine\ORM\EntityManager', array(), array(), '', false);
         $foo = new FooEntityProxy();
 
-        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
+        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', array('index'));
         $service
             ->expects($this->once())
             ->method('index')
@@ -96,10 +96,10 @@ class IndexSubscriberTest extends \PHPUnit_Framework_TestCase
 
     public function testIrrelevantEntityProxyIsNotIndexedWhenPersisted()
     {
-        $em = $this->getMock('Doctrine\ORM\EntityManager', [], [], '', false);
+        $em = $this->getMock('Doctrine\ORM\EntityManager', array(), array(), '', false);
         $foo = new BarEntity();
 
-        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
+        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', array('index'));
         $service
             ->expects($this->never())
             ->method('index');
@@ -115,10 +115,10 @@ class IndexSubscriberTest extends \PHPUnit_Framework_TestCase
 
     public function testRelevantEntityIsIndexedWhenUpdated()
     {
-        $em = $this->getMock('Doctrine\ORM\EntityManager', [], [], '', false);
+        $em = $this->getMock('Doctrine\ORM\EntityManager', array(), array(), '', false);
         $foo = new FooEntity();
 
-        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', ['index']);
+        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', array('index'));
         $service
             ->expects($this->once())
             ->method('index')
@@ -135,10 +135,10 @@ class IndexSubscriberTest extends \PHPUnit_Framework_TestCase
 
     public function testRelevantEntityIsUnindexedWhenRemoved()
     {
-        $em = $this->getMock('Doctrine\ORM\EntityManager', [], [], '', false);
+        $em = $this->getMock('Doctrine\ORM\EntityManager', array(), array(), '', false);
         $foo = new FooEntity();
 
-        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', ['indexRemove']);
+        $service = $this->getMock('Leapt\ElasticaBundle\Tests\Listener\Mock\Service', array('indexRemove'));
         $service
             ->expects($this->once())
             ->method('indexRemove')

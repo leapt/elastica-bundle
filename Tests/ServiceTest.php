@@ -10,7 +10,7 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
 {
     public function testRegisterIndexerWithValidManagedClass()
     {
-        $mockClient = $this->getMock('Leapt\ElasticaBundle\Client', [], [], '', false);
+        $mockClient = $this->getMock('Leapt\ElasticaBundle\Client', array(), array(), '', false);
         $service = new Service($mockClient, 'plop');
 
         $service->registerIndexer('foo', new FooIndexer());
@@ -22,7 +22,7 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
      */
     public function testRegisterIndexerWithInvalidManagedClass()
     {
-        $mockClient = $this->getMock('Leapt\ElasticaBundle\Client', [], [], '', false);
+        $mockClient = $this->getMock('Leapt\ElasticaBundle\Client', array(), array(), '', false);
         $service = new Service($mockClient, 'plop');
 
         $service->registerIndexer('bar', new BarIndexer());
