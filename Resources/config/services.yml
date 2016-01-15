@@ -5,31 +5,31 @@ parameters:
 services:
     leapt_elastica.service:
         class: Leapt\ElasticaBundle\Service
-        arguments: [@leapt_elastica.client, %leapt_elastica.namespace%]
+        arguments: [ "@leapt_elastica.client", %leapt_elastica.namespace% ]
         calls:
-            - [setContainer, [ @service_container ]]
-            - [setIndexes, [ %leapt_elastica.indexes% ]]
+            - [ setContainer, [ "@service_container" ]]
+            - [ setIndexes, [ %leapt_elastica.indexes% ]]
 
     leapt_elastica.client:
         class: Leapt\ElasticaBundle\Client
-        arguments: [%leapt_elastica.config%]
+        arguments: [ %leapt_elastica.config% ]
         calls:
-            - [setLogger, [ @leapt_elastica.logger ]]
+            - [ setLogger, [ "@leapt_elastica.logger" ]]
 
     leapt_elastica.subscriber:
         class: Leapt\ElasticaBundle\Listener\IndexSubscriber
-        arguments: [@leapt_elastica.service]
+        arguments: [ "@leapt_elastica.service" ]
         tags:
             - { name: doctrine.event_subscriber }
 
     leapt_elastica.logger:
         class: Leapt\ElasticaBundle\Logger\ElasticaLogger
-        arguments: [ @logger, %kernel.debug% ]
+        arguments: [ "@logger", %kernel.debug% ]
         tags:
             - { name: monolog.logger, channel: elastica }
 
     leapt_elastica.data_collector:
         class: Leapt\ElasticaBundle\DataCollector\ElasticaDataCollector
-        arguments: [ @leapt_elastica.logger ]
+        arguments: [ "@leapt_elastica.logger" ]
         tags:
             - { name: data_collector, template: "LeaptElasticaBundle:Collector:elastica", id: "elastica" }

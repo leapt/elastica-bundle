@@ -7,15 +7,16 @@ use Elastica\ResultSet;
 use Elastica\Search;
 use Elastica\Type\Mapping;
 use Leapt\ElasticaBundle\Indexer\IndexerInterface;
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 /**
  * This service class is the main entry point for Elastica operations
  *
  * @package Leapt\ElasticaBundle
  */
-class Service extends ContainerAware implements ServiceInterface
+class Service implements ServiceInterface
 {
+    use ContainerAwareTrait;
 
     /**
      * @var Client
