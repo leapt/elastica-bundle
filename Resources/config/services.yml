@@ -5,14 +5,14 @@ parameters:
 services:
     leapt_elastica.service:
         class: Leapt\ElasticaBundle\Service
-        arguments: [ "@leapt_elastica.client", %leapt_elastica.namespace% ]
+        arguments: [ "@leapt_elastica.client", "%leapt_elastica.namespace%" ]
         calls:
             - [ setContainer, [ "@service_container" ]]
-            - [ setIndexes, [ %leapt_elastica.indexes% ]]
+            - [ setIndexes, [ "%leapt_elastica.indexes%" ]]
 
     leapt_elastica.client:
         class: Leapt\ElasticaBundle\Client
-        arguments: [ %leapt_elastica.config% ]
+        arguments: [ "%leapt_elastica.config%" ]
         calls:
             - [ setLogger, [ "@leapt_elastica.logger" ]]
 
@@ -24,7 +24,7 @@ services:
 
     leapt_elastica.logger:
         class: Leapt\ElasticaBundle\Logger\ElasticaLogger
-        arguments: [ "@logger", %kernel.debug% ]
+        arguments: [ "@logger", "%kernel.debug%" ]
         tags:
             - { name: monolog.logger, channel: elastica }
 
