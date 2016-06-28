@@ -231,6 +231,32 @@ class Service implements ServiceInterface
     }
 
     /**
+     * @param string $query
+     * @param string $index
+     * @param null|array $types
+     * @param bool $fullResult
+     * @return ResultSet|int
+     */
+    public function count($query, $index, $types = null, $fullResult = false)
+    {
+        $search = new Search($this->client);
+
+        if (!is_array($index)) {
+            $index = array($index);
+        }
+        if($types === null) {
+            $types = array_keys($this->indexers);
+        }
+
+        foreach ($index as $idx) {
+            $search->addIndex($this->addNamespace($idx));
+        }
+
+        $search->addTypes($types);
+        return $search->count($query, $fullResult);
+    }
+
+    /**
      * Register an index
      *
      * @param string $alias
