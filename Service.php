@@ -122,7 +122,11 @@ class Service implements ServiceInterface
             $type = $index->getType($typeName);
 
             // Create the type with the correct mapping
-            $type->delete();
+            try {
+                $type->delete();
+            } catch (\Elastica\Exception\ResponseException $e) {
+                // Catch exception when the type does not exist yet
+            }
             $mapping = new Mapping();
             $mapping->setType($type);
             $mapping->setProperties($indexer->getMappings());
