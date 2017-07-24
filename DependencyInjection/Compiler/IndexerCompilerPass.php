@@ -26,7 +26,7 @@ class IndexerCompilerPass implements CompilerPassInterface
         foreach ($container->findTaggedServiceIds('leapt_elastica.indexer') as $serviceId => $tag) {
             $alias = isset($tag[0]['alias'])
                 ? $tag[0]['alias']
-                : $serviceId;
+                : (method_exists($serviceId, 'getAlias') ? $serviceId::getAlias() : $serviceId);
             $definition->addMethodCall('registerIndexer', array($alias, new Reference($serviceId)));
         }
     }
