@@ -8,6 +8,9 @@ services:
         autoconfigure: true
         public: false
 
+    Leapt\ElasticaBundle\Command\:
+        resource: '../../Command/*'
+
     Leapt\ElasticaBundle\Service:
         arguments:
             $namespace: "%leapt_elastica.namespace%"
@@ -27,14 +30,13 @@ services:
         tags:
             - { name: doctrine.event_subscriber }
 
-    leapt_elastica.logger:
-        class: Leapt\ElasticaBundle\Logger\ElasticaLogger
-        arguments: [ "@logger", "%kernel.debug%" ]
+    Leapt\ElasticaBundle\Logger\ElasticaLogger:
+        arguments:
+            - "@logger"
+            - "%kernel.debug%"
         tags:
             - { name: monolog.logger, channel: elastica }
 
-    leapt_elastica.data_collector:
-        class: Leapt\ElasticaBundle\DataCollector\ElasticaDataCollector
-        arguments: [ "@leapt_elastica.logger" ]
+    Leapt\ElasticaBundle\DataCollector\ElasticaDataCollector:
         tags:
             - { name: data_collector, template: "LeaptElasticaBundle:Collector:elastica", id: "elastica" }
