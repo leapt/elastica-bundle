@@ -5,7 +5,7 @@ namespace Leapt\ElasticaBundle\Paginator;
 use Elastica\Query;
 use Elastica\ResultSet;
 use Leapt\CoreBundle\Paginator\AbstractPaginator;
-use Leapt\ElasticaBundle\Service;
+use Leapt\ElasticaBundle\ServiceInterface;
 
 /**
  * Class ElasticaPaginator
@@ -36,9 +36,9 @@ class ElasticaPaginator extends AbstractPaginator
     /**
      * @param Query $query
      * @param $index
-     * @param Service $elastica
+     * @param ServiceInterface $elastica
      */
-    public function __construct(Query $query, $index, Service $elastica = null)
+    public function __construct(Query $query, $index, ServiceInterface $elastica = null)
     {
         $this->elasticaQuery = $query;
         $this->index = $index;
@@ -46,10 +46,10 @@ class ElasticaPaginator extends AbstractPaginator
     }
 
     /**
-     * @param Service $elastica
+     * @param ServiceInterface $elastica
      * @return ElasticaPaginator
      */
-    public function setElasticaService(Service $elastica)
+    public function setElasticaService(ServiceInterface $elastica)
     {
         $this->elastica = $elastica;
 
@@ -128,7 +128,7 @@ class ElasticaPaginator extends AbstractPaginator
      */
     private function search()
     {
-        $this->elasticaQuery->setLimit($this->limitPerPage);
+        $this->elasticaQuery->setSize($this->limitPerPage);
         $this->elasticaQuery->setFrom($this->getOffset());
         $this->resultSet = $this->elastica->search($this->elasticaQuery, $this->index);
     }

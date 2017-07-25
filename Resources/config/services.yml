@@ -3,22 +3,27 @@ parameters:
     leapt_elastica.config: []
 
 services:
-    leapt_elastica.service:
-        class: Leapt\ElasticaBundle\Service
-        arguments: [ "@leapt_elastica.client", "%leapt_elastica.namespace%" ]
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    Leapt\ElasticaBundle\Service:
+        arguments:
+            $namespace: "%leapt_elastica.namespace%"
         calls:
             - [ setContainer, [ "@service_container" ]]
             - [ setIndexes, [ "%leapt_elastica.indexes%" ]]
 
-    leapt_elastica.client:
-        class: Leapt\ElasticaBundle\Client
-        arguments: [ "%leapt_elastica.config%" ]
-        calls:
-            - [ setLogger, [ "@leapt_elastica.logger" ]]
+    Leapt\ElasticaBundle\ServiceInterface: "@Leapt\\ElasticaBundle\\Service"
 
-    leapt_elastica.subscriber:
-        class: Leapt\ElasticaBundle\Listener\IndexSubscriber
-        arguments: [ "@leapt_elastica.service" ]
+    Leapt\ElasticaBundle\Client:
+        arguments:
+            - "%leapt_elastica.config%"
+        calls:
+            - [ setLogger, [ "@Leapt\\ElasticaBundle\\Logger\\ElasticaLogger" ]]
+
+    Leapt\ElasticaBundle\Listener\IndexSubscriber:
         tags:
             - { name: doctrine.event_subscriber }
 

@@ -27,7 +27,7 @@ class IndexerCompilerPass implements CompilerPassInterface
             $alias = isset($tag[0]['alias'])
                 ? $tag[0]['alias']
                 : (method_exists($serviceId, 'getAlias') ? $serviceId::getAlias() : $serviceId);
-            $definition->addMethodCall('registerIndexer', array($alias, new Reference($serviceId)));
+            $definition->addMethodCall('registerIndexer', [$alias, new Reference($serviceId)]);
         }
     }
 }

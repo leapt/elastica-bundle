@@ -23,7 +23,7 @@ class FooIndexer implements IndexerInterface
      */
     public function getManagedClasses()
     {
-        return array('Leapt\ElasticaBundle\Tests\Mock\FooEntity');
+        return ['Leapt\ElasticaBundle\Tests\Mock\FooEntity'];
     }
 
     /**

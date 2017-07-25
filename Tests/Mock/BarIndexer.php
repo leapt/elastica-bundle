@@ -23,7 +23,7 @@ class BarIndexer implements IndexerInterface
      */
     public function getManagedClasses()
     {
-        return array('Leapt\ElasticaBundle\Tests\Mock\BarEntity');
+        return ['Leapt\ElasticaBundle\Tests\Mock\BarEntity'];
     }
 
     /**

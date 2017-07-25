@@ -16,11 +16,11 @@ class Service implements ServiceInterface
     /**
      * @var array
      */
-    private $indexers = array();
+    private $indexers = [];
 
     public function __construct()
     {
-        $this->indexers = array(new FooIndexer());
+        $this->indexers = [new FooIndexer()];
     }
 
     /**

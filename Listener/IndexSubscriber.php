@@ -16,24 +16,24 @@ use Leapt\ElasticaBundle\ServiceInterface;
 class IndexSubscriber implements EventSubscriber
 {
     /**
-     * @var \Leapt\ElasticaBundle\Service
+     * @var \Leapt\ElasticaBundle\ServiceInterface
      */
     private $elastica;
 
     /**
      * @var array
      */
-    private $managedClasses = array();
+    private $managedClasses = [];
 
     /**
      * @var array
      */
-    private $scheduledIndexations = array();
+    private $scheduledIndexations = [];
 
     /**
      * @var array
      */
-    private $scheduledUnindexations = array();
+    private $scheduledUnindexations = [];
 
     /**
      * @param \Leapt\ElasticaBundle\ServiceInterface $elastica
@@ -53,7 +53,7 @@ class IndexSubscriber implements EventSubscriber
      */
     public function getSubscribedEvents()
     {
-        return array('postPersist', 'postUpdate', 'preRemove', 'postFlush');
+        return ['postPersist', 'postUpdate', 'preRemove', 'postFlush'];
     }
 
     /**
@@ -91,13 +91,13 @@ class IndexSubscriber implements EventSubscriber
         {
             $this->elastica->index($entity);
         }
-        $this->scheduledIndexations = array();
+        $this->scheduledIndexations = [];
 
         foreach($this->scheduledUnindexations as $entity)
         {
             $this->elastica->indexRemove($entity);
         }
-        $this->scheduledUnindexations = array();
+        $this->scheduledUnindexations = [];
     }
 
     /**

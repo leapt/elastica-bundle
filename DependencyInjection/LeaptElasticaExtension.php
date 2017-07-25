@@ -25,7 +25,7 @@ class LeaptElasticaExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
 
-        foreach (array('indexes', 'config', 'namespace') as $attribute) {
+        foreach (['indexes', 'config', 'namespace'] as $attribute) {
             $container->setParameter('leapt_elastica.' . $attribute , $config[$attribute]);
         }
     }

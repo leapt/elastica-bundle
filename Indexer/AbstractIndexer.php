@@ -49,7 +49,7 @@ abstract class AbstractIndexer implements IndexerInterface
      */
     public function getIndexableEntities($entity)
     {
-        return array($entity);
+        return [$entity];
     }
 
     /**

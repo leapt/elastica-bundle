@@ -27,7 +27,7 @@ class Client extends BaseClient
      * @param array $query
      * @return \Elastica\Response
      */
-    public function request($path, $method = Request::GET, $data = array(), array $query = array())
+    public function request($path, $method = Request::GET, $data = [], array $query = [])
     {
         if ($this->stopwatch) {
             $this->stopwatch->start('es_request', 'leapt_elastica');
@@ -66,12 +66,12 @@ class Client extends BaseClient
         }
         $time = microtime(true) - $start;
         $connection = $this->getLastRequest()->getConnection();
-        $connection_array = array(
+        $connection_array = [
             'host'      => $connection->getHost(),
             'port'      => $connection->getPort(),
             'transport' => $connection->getTransport(),
-            'headers'   => $connection->hasConfig('headers') ? $connection->getConfig('headers') : array(),
-        );
+            'headers'   => $connection->hasConfig('headers') ? $connection->getConfig('headers') : [],
+        ];
         $this->_logger->logQuery($path, $method, $data, $time, $connection_array, $query);
     }
 }

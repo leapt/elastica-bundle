@@ -23,12 +23,12 @@ class FooIndexer implements IndexerInterface
      */
     public function getManagedClasses()
     {
-        return array(
+        return [
             'Leapt\ElasticaBundle\Tests\Listener\Mock\FooEntity',
             // Notice the lowercased entity name - we actually want to test this... should work even if the actual
             // class name is BazEntity with a capital E
             'Leapt\ElasticaBundle\Tests\Listener\Mock\Bazentity'
-        );
+        ];
     }
 
     /**

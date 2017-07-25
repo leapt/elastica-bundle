@@ -31,17 +31,17 @@ class Service implements ServiceInterface
     /**
      * @var array
      */
-    protected $indexes = array();
+    protected $indexes = [];
 
     /**
      * @var array
      */
-    protected $types = array();
+    protected $types = [];
 
     /**
      * @var array
      */
-    protected $indexers = array();
+    protected $indexers = [];
 
     /**
      * @param Client $client
@@ -220,7 +220,7 @@ class Service implements ServiceInterface
         $search = new Search($this->client);
 
         if (!is_array($index)) {
-            $index = array($index);
+            $index = [$index];
         }
         if($types === null) {
             $types = array_keys($this->indexers);
@@ -246,7 +246,7 @@ class Service implements ServiceInterface
         $search = new Search($this->client);
 
         if (!is_array($index)) {
-            $index = array($index);
+            $index = [$index];
         }
         if($types === null) {
             $types = array_keys($this->indexers);
@@ -296,7 +296,7 @@ class Service implements ServiceInterface
      */
     public function setIndexes(array $indexes)
     {
-        $namespacedIndexes = array();
+        $namespacedIndexes = [];
         foreach($indexes as $indexName => $indexParams) {
             $namespacedIndexes[$this->addNamespace($indexName)] = $indexParams;
         }

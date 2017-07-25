@@ -18,7 +18,7 @@ class ElasticaLogger implements LoggerInterface
     /**
      * @var array
      */
-    protected $queries = array();
+    protected $queries = [];
 
     /**
      * @var boolean
@@ -47,17 +47,17 @@ class ElasticaLogger implements LoggerInterface
      * @param array  $connection Host, port, transport, and headers of the query
      * @param array  $query      Arguments
      */
-    public function logQuery($path, $method, $data, $time, $connection = array(), $query = array())
+    public function logQuery($path, $method, $data, $time, $connection = [], $query = [])
     {
         if ($this->debug) {
-            $this->queries[] = array(
-                'path' => $path,
-                'method' => $method,
-                'data' => $data,
+            $this->queries[] = [
+                'path'        => $path,
+                'method'      => $method,
+                'data'        => $data,
                 'executionMS' => $time,
-                'connection' => $connection,
+                'connection'  => $connection,
                 'queryString' => $query,
-            );
+            ];
         }
 
         if (null !== $this->logger) {
@@ -89,7 +89,7 @@ class ElasticaLogger implements LoggerInterface
     /**
      * {@inheritdoc}
      */
-    public function emergency($message, array $context = array())
+    public function emergency($message, array $context = [])
     {
         return $this->logger->emergency($message, $context);
     }
@@ -97,7 +97,7 @@ class ElasticaLogger implements LoggerInterface
     /**
      * {@inheritdoc}
      */
-    public function alert($message, array $context = array())
+    public function alert($message, array $context = [])
     {
         return $this->logger->alert($message, $context);
     }
@@ -105,7 +105,7 @@ class ElasticaLogger implements LoggerInterface
     /**
      * {@inheritdoc}
      */
-    public function critical($message, array $context = array())
+    public function critical($message, array $context = [])
     {
         return $this->logger->critical($message, $context);
     }
@@ -113,7 +113,7 @@ class ElasticaLogger implements LoggerInterface
     /**
      * {@inheritdoc}
      */
-    public function error($message, array $context = array())
+    public function error($message, array $context = [])
     {
         return $this->logger->error($message, $context);
     }
@@ -121,7 +121,7 @@ class ElasticaLogger implements LoggerInterface
     /**
      * {@inheritdoc}
      */
-    public function warning($message, array $context = array())
+    public function warning($message, array $context = [])
     {
         return $this->logger->warning($message, $context);
     }
@@ -129,7 +129,7 @@ class ElasticaLogger implements LoggerInterface
     /**
      * {@inheritdoc}
      */
-    public function notice($message, array $context = array())
+    public function notice($message, array $context = [])
     {
         return $this->logger->notice($message, $context);
     }
@@ -137,7 +137,7 @@ class ElasticaLogger implements LoggerInterface
     /**
      * {@inheritdoc}
      */
-    public function info($message, array $context = array())
+    public function info($message, array $context = [])
     {
         return $this->logger->info($message, $context);
     }
@@ -145,7 +145,7 @@ class ElasticaLogger implements LoggerInterface
     /**
      * {@inheritdoc}
      */
-    public function debug($message, array $context = array())
+    public function debug($message, array $context = [])
     {
         return $this->logger->debug($message, $context);
     }
@@ -153,7 +153,7 @@ class ElasticaLogger implements LoggerInterface
     /**
      * {@inheritdoc}
      */
-    public function log($level, $message, array $context = array())
+    public function log($level, $message, array $context = [])
     {
         return $this->logger->log($level, $message, $context);
     }
