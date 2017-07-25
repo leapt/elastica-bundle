@@ -19,10 +19,10 @@ class IndexerCompilerPass implements CompilerPassInterface
      */
     function process(ContainerBuilder $container)
     {
-        if (false === $container->hasDefinition('leapt_elastica.service')) {
+        if (false === $container->hasDefinition('Leapt\ElasticaBundle\Service')) {
             return;
         }
-        $definition = $container->getDefinition('leapt_elastica.service');
+        $definition = $container->getDefinition('Leapt\ElasticaBundle\Service');
         foreach ($container->findTaggedServiceIds('leapt_elastica.indexer') as $serviceId => $tag) {
             $alias = isset($tag[0]['alias'])
                 ? $tag[0]['alias']
