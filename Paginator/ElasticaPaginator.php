@@ -34,6 +34,11 @@ class ElasticaPaginator extends AbstractPaginator
     private $index;
 
     /**
+     * @var array
+     */
+    private $types;
+
+    /**
      * @param Query $query
      * @param $index
      * @param ServiceInterface $elastica
@@ -87,6 +92,17 @@ class ElasticaPaginator extends AbstractPaginator
     }
 
     /**
+     * @param array $types
+     * @return $this
+     */
+    public function setTypes(array $types)
+    {
+        $this->types = $types;
+
+        return $this;
+    }
+
+    /**
      * @return int
      */
     public function count()
@@ -130,6 +146,6 @@ class ElasticaPaginator extends AbstractPaginator
     {
         $this->elasticaQuery->setSize($this->limitPerPage);
         $this->elasticaQuery->setFrom($this->getOffset());
-        $this->resultSet = $this->elastica->search($this->elasticaQuery, $this->index);
+        $this->resultSet = $this->elastica->search($this->elasticaQuery, $this->index, $this->types);
     }
 }
