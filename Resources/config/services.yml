@@ -39,4 +39,4 @@ services:
 
     Leapt\ElasticaBundle\DataCollector\ElasticaDataCollector:
         tags:
-            - { name: data_collector, template: "LeaptElasticaBundle:Collector:elastica", id: "elastica" }
+            - { name: data_collector, template: "@LeaptElastica/Collector/elastica.html.twig", id: "elastica" }
