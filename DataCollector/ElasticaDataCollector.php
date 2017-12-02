@@ -61,6 +61,14 @@ class ElasticaDataCollector extends DataCollector
         return $time;
     }
 
+    public function reset()
+    {
+        $this->data = [
+            'nb_queries' => 0,
+            'queries'    => [],
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
