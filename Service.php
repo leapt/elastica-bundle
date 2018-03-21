@@ -110,7 +110,7 @@ class Service implements ServiceInterface
     public function rebuildType($typeName)
     {
         // Check indexer with the given type name
-        if (!isset($typeName, $this->indexers)) {
+        if (!isset($this->indexers[$typeName])) {
             throw new \UnexpectedValueException(sprintf('The indexer for type "%s" does not exist.', $typeName));
         }
 
