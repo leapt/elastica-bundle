@@ -2,10 +2,10 @@
 
 namespace Leapt\ElasticaBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
+use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
 class LeaptElasticaExtension extends Extension
 {
@@ -18,7 +18,7 @@ class LeaptElasticaExtension extends Extension
         $loader->load('services.yml');
 
         foreach (['indexes', 'config', 'namespace'] as $attribute) {
-            $container->setParameter('leapt_elastica.' . $attribute , $config[$attribute]);
+            $container->setParameter('leapt_elastica.' . $attribute, $config[$attribute]);
         }
     }
 }

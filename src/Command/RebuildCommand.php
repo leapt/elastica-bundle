@@ -35,7 +35,7 @@ class RebuildCommand extends Command
         $timeStart = microtime(true);
 
         // Rebuild only given types
-        if ($input->hasArgument('types') && 0 < count($input->getArgument('types'))) {
+        if ($input->hasArgument('types') && 0 < \count($input->getArgument('types'))) {
             foreach ($input->getArgument('types') as $type) {
                 $output->writeln(sprintf('Rebuilding "%s" type', $type));
                 $this->elastica->rebuildType($type);

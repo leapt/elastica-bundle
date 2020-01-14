@@ -11,10 +11,6 @@ use Leapt\ElasticaBundle\Tests\Listener\Mock\FooEntity;
 use Leapt\ElasticaBundle\Tests\Listener\Mock\FooEntityProxy;
 use PHPUnit\Framework\TestCase;
 
-/**
- * Class IndexSubscriberTest
- * @package Leapt\ElasticaBundle\Tests\Listener
- */
 class IndexSubscriberTest extends TestCase
 {
     public function testRelevantEntityIsIndexedWhenPersisted(): void
@@ -76,7 +72,7 @@ class IndexSubscriberTest extends TestCase
 
         $indexSubscriber = new IndexSubscriber($service);
 
-        for($i = 0; $i < 10; ++$i) {
+        for ($i = 0; 10 > $i; ++$i) {
             $ea = new LifecycleEventArgs($foo, $em);
             $indexSubscriber->postPersist($ea);
         }

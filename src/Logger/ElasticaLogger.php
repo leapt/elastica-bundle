@@ -51,7 +51,7 @@ class ElasticaLogger implements LoggerInterface
         }
 
         if (null !== $this->logger) {
-            $message = sprintf("%s (%s) %0.2f ms", $path, $method, $time * 1000);
+            $message = sprintf('%s (%s) %0.2f ms', $path, $method, $time * 1000);
             $this->logger->info($message, (array) $data);
         }
     }
@@ -61,7 +61,7 @@ class ElasticaLogger implements LoggerInterface
      */
     public function getNbQueries(): int
     {
-        return count($this->queries);
+        return \count($this->queries);
     }
 
     /**

@@ -7,7 +7,7 @@ use Elastica\Type;
 use Leapt\ElasticaBundle\Indexer\IndexerInterface;
 
 /**
- * Mock indexers for unit tests
+ * Mock indexers for unit tests.
  */
 class FooIndexer implements IndexerInterface
 {

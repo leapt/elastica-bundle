@@ -7,9 +7,7 @@ use Leapt\ElasticaBundle\Indexer\IndexerInterface;
 use Leapt\ElasticaBundle\ServiceInterface;
 
 /**
- * Mock service class for unit tests
- *
- * @package Leapt\ElasticaBundle\Tests\Listener\Mock
+ * Mock service class for unit tests.
  */
 class Service implements ServiceInterface
 {
@@ -24,8 +22,7 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Create indexes as defined in the config
-     *
+     * Create indexes as defined in the config.
      */
     public function createIndexes()
     {
@@ -33,8 +30,7 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Reindex all indexable content
-     *
+     * Reindex all indexable content.
      */
     public function reindex()
     {
@@ -42,7 +38,7 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Index the provided entity (or unindex it if its indexer asks us too)
+     * Index the provided entity (or unindex it if its indexer asks us too).
      *
      * @param object $entity
      */
@@ -52,9 +48,10 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Unindex the provided entity
+     * Unindex the provided entity.
      *
      * @param object $entity
+     *
      * @return mixed
      */
     public function indexRemove($entity)
@@ -63,11 +60,12 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Perform a simple search on the given index and types
+     * Perform a simple search on the given index and types.
      *
-     * @param string $query
+     * @param string       $query
      * @param string|array $index
-     * @param array $types
+     * @param array        $types
+     *
      * @return \Elastica\ResultSet
      */
     public function search($query, $index, $types = null)
@@ -76,9 +74,9 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Register an index
+     * Register an index.
      *
-     * @param string $alias
+     * @param string                   $alias
      * @param Indexer\IndexerInterface $indexer
      */
     public function registerIndexer($alias, IndexerInterface $indexer)
@@ -87,7 +85,7 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Return all indexers
+     * Return all indexers.
      *
      * @return array
      */
@@ -97,12 +95,10 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Set indexes
-     *
-     * @param array $indexes
+     * Set indexes.
      */
     public function setIndexes(array $indexes)
     {
         // TODO: Implement setIndexes() method.
     }
-} 
+}

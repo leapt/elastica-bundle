@@ -7,7 +7,7 @@ use Elastica\Type;
 use Leapt\ElasticaBundle\Indexer\IndexerInterface;
 
 /**
- * Mock indexers for unit tests
+ * Mock indexers for unit tests.
  */
 class BarIndexer implements IndexerInterface
 {
@@ -70,4 +70,4 @@ class BarIndexer implements IndexerInterface
     {
         // TODO: Implement setEntityManager() method.
     }
-} 
+}

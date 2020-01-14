@@ -19,8 +19,8 @@ class Client extends BaseClient
     /**
      * @param string $path
      * @param string $method
-     * @param array $data
-     * @param array $query
+     * @param array  $data
+     *
      * @return \Elastica\Response
      */
     public function request($path, $method = Request::GET, $data = [], array $query = [])
@@ -34,8 +34,10 @@ class Client extends BaseClient
         if ($this->stopwatch) {
             $this->stopwatch->stop('es_request');
         }
+
         return $response;
     }
+
     /**
      * Sets a stopwatch instance for debugging purposes.
      *
@@ -52,7 +54,6 @@ class Client extends BaseClient
      * @param string $path
      * @param string $method
      * @param array  $data
-     * @param array  $query
      * @param int    $start
      */
     private function logQuery($path, $method, $data, array $query, $start)

@@ -35,7 +35,6 @@ class ElasticaPaginator extends AbstractPaginator
     private $types;
 
     /**
-     * @param Query $query
      * @param $index
      * @param ServiceInterface $elastica
      */
@@ -47,7 +46,6 @@ class ElasticaPaginator extends AbstractPaginator
     }
 
     /**
-     * @param ServiceInterface $elastica
      * @return ElasticaPaginator
      */
     public function setElasticaService(ServiceInterface $elastica)
@@ -59,12 +57,14 @@ class ElasticaPaginator extends AbstractPaginator
 
     /**
      * @param int $page
+     *
      * @return $this|\Leapt\CoreBundle\Paginator\PaginatorInterface
+     *
      * @throws \InvalidArgumentException
      */
     public function setPage($page)
     {
-        if($page < 1) {
+        if (1 > $page) {
             throw new \InvalidArgumentException('The page is invalid');
         }
         $this->page = $page;
@@ -74,12 +74,14 @@ class ElasticaPaginator extends AbstractPaginator
 
     /**
      * @param int $limitPerPage
+     *
      * @return ElasticaPaginator
+     *
      * @throws \InvalidArgumentException
      */
     public function setLimitPerPage($limitPerPage)
     {
-        if ($limitPerPage <= 0) {
+        if (0 >= $limitPerPage) {
             throw new \InvalidArgumentException('The limit per page is invalid');
         }
         $this->limitPerPage = $limitPerPage;
@@ -88,7 +90,6 @@ class ElasticaPaginator extends AbstractPaginator
     }
 
     /**
-     * @param array $types
      * @return $this
      */
     public function setTypes(array $types)
@@ -135,8 +136,7 @@ class ElasticaPaginator extends AbstractPaginator
     }
 
     /**
-     * Launch the search
-     *
+     * Launch the search.
      */
     private function search()
     {

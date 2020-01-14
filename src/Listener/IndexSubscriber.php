@@ -9,7 +9,7 @@ use Leapt\ElasticaBundle\ServiceInterface;
 
 /**
  * This subscriber class listens to Doctrine events and, depending on the registered indexers, automatically
- * triggers index/unindex operations
+ * triggers index/unindex operations.
  */
 class IndexSubscriber implements EventSubscriber
 {
@@ -33,9 +33,6 @@ class IndexSubscriber implements EventSubscriber
      */
     private $scheduledUnindexations = [];
 
-    /**
-     * @param \Leapt\ElasticaBundle\ServiceInterface $elastica
-     */
     public function __construct(ServiceInterface $elastica)
     {
         $this->elastica = $elastica;
@@ -70,25 +67,23 @@ class IndexSubscriber implements EventSubscriber
     }
 
     /**
-     * We trigger index/unindex operations on postFlush events
+     * We trigger index/unindex operations on postFlush events.
      */
     public function postFlush(PostFlushEventArgs $ea)
     {
-        foreach($this->scheduledIndexations as $entity)
-        {
+        foreach ($this->scheduledIndexations as $entity) {
             $this->elastica->index($entity);
         }
         $this->scheduledIndexations = [];
 
-        foreach($this->scheduledUnindexations as $entity)
-        {
+        foreach ($this->scheduledUnindexations as $entity) {
             $this->elastica->indexRemove($entity);
         }
         $this->scheduledUnindexations = [];
     }
 
     /**
-     * Schedule the provided entity for an index operation
+     * Schedule the provided entity for an index operation.
      */
     private function scheduleForIndexation($entity)
     {
@@ -99,7 +94,7 @@ class IndexSubscriber implements EventSubscriber
     }
 
     /**
-     * Schedule the provided entity for an unindex operation
+     * Schedule the provided entity for an unindex operation.
      */
     private function scheduleForUnindexation($entity)
     {
@@ -110,13 +105,13 @@ class IndexSubscriber implements EventSubscriber
     }
 
     /**
-     * Determines if the provided entity is managed by the Elastica subscriber
+     * Determines if the provided entity is managed by the Elastica subscriber.
      */
     private function isManaged($entity): bool
     {
         $managed = false;
 
-        if (\in_array(get_class($entity), $this->managedClasses, true)) {
+        if (\in_array(\get_class($entity), $this->managedClasses, true)) {
             $managed = true;
         }
 

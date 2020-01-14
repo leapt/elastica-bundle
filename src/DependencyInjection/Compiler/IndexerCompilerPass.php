@@ -7,17 +7,14 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * Class IndexerCompilerPass
- * @package Leapt\ElasticaBundle\DependencyInjection\Compiler
+ * Class IndexerCompilerPass.
  */
 class IndexerCompilerPass implements CompilerPassInterface
 {
     /**
-     * Check for indexer services in configuration
-     *
-     * @param \Symfony\Component\DependencyInjection\ContainerBuilder $container
+     * Check for indexer services in configuration.
      */
-    function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container)
     {
         if (false === $container->hasDefinition('Leapt\ElasticaBundle\Service')) {
             return;

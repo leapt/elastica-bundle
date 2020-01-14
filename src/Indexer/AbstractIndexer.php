@@ -9,7 +9,6 @@ use Elastica\Type;
 
 abstract class AbstractIndexer implements IndexerInterface
 {
-
     /**
      * @var EntityManager
      */
@@ -19,7 +18,7 @@ abstract class AbstractIndexer implements IndexerInterface
     {
         $supports = false;
 
-        if (\in_array(get_class($entity), $this->getManagedClasses(), true)) {
+        if (\in_array(\get_class($entity), $this->getManagedClasses(), true)) {
             $supports = true;
         }
 
@@ -60,9 +59,9 @@ abstract class AbstractIndexer implements IndexerInterface
     {
         try {
             $type->deleteById($id);
+        } catch (\InvalidArgumentException $e) {
+        } catch (NotFoundException $e) {
         }
-        catch(\InvalidArgumentException $e){}
-        catch(NotFoundException $e){}
     }
 
     public function setEntityManager(EntityManager $em): void

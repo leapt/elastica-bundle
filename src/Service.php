@@ -10,7 +10,7 @@ use Leapt\ElasticaBundle\Indexer\IndexerInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 /**
- * This service class is the main entry point for Elastica operations
+ * This service class is the main entry point for Elastica operations.
  */
 class Service implements ServiceInterface
 {
@@ -42,7 +42,6 @@ class Service implements ServiceInterface
     protected $indexers = [];
 
     /**
-     * @param Client $client
      * @param string $namespace
      */
     public function __construct(Client $client, $namespace)
@@ -52,8 +51,7 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Create indexes as defined in the config
-     *
+     * Create indexes as defined in the config.
      */
     public function createIndexes()
     {
@@ -65,25 +63,7 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Create types associated with the given index
-     *
-     * @param Index $index
-     */
-    protected function createTypes(Index $index)
-    {
-        foreach ($this->indexers as $indexerAlias => $indexer) {
-            $type = $index->getType($indexerAlias);
-
-            $mapping = new Mapping();
-            $mapping->setType($type);
-            $mapping->setProperties($indexer->getMappings());
-            $mapping->send();
-        }
-    }
-
-    /**
-     * Reindex all indexable content
-     *
+     * Reindex all indexable content.
      */
     public function reindex()
     {
@@ -92,7 +72,7 @@ class Service implements ServiceInterface
             foreach ($this->indexers as $indexerAlias => $indexer) {
                 $type = $index->getType($indexerAlias);
                 $entities = $indexer->getEntitiesToIndex($this->container->get('doctrine.orm.entity_manager'), $type);
-                foreach($entities as $entity) {
+                foreach ($entities as $entity) {
                     $indexer->addIndex($entity, $type);
                 }
                 $this->container->get('doctrine.orm.entity_manager')->clear();
@@ -101,7 +81,7 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Rebuild one type associated to all indexes
+     * Rebuild one type associated to all indexes.
      *
      * @param string $typeName
      */
@@ -132,7 +112,7 @@ class Service implements ServiceInterface
 
             // Reindex data
             $entities = $indexer->getEntitiesToIndex($this->container->get('doctrine.orm.entity_manager'), $type);
-            foreach($entities as $entity) {
+            foreach ($entities as $entity) {
                 $indexer->addIndex($entity, $type);
             }
             $this->container->get('doctrine.orm.entity_manager')->clear();
@@ -140,7 +120,7 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Take the appropriate index action for the given entity
+     * Take the appropriate index action for the given entity.
      *
      * @param object $entity
      */
@@ -149,20 +129,18 @@ class Service implements ServiceInterface
         foreach ($this->indexes as $indexName => $indexParams) {
             $index = $this->client->getIndex($indexName);
             foreach ($this->indexers as $indexerAlias => $indexer) {
-                if($indexer->supports($entity)) {
+                if ($indexer->supports($entity)) {
                     $type = $index->getType($indexerAlias);
 
                     $indexableEntities = $indexer->getIndexableEntities($entity);
                     foreach ($indexableEntities as $indexableEntity) {
-
-                        if($this->container->get('doctrine.orm.entity_manager')->getUnitOfWork()->isScheduledForDelete($indexableEntity)) {
+                        if ($this->container->get('doctrine.orm.entity_manager')->getUnitOfWork()->isScheduledForDelete($indexableEntity)) {
                             $action = IndexerInterface::ACTION_REMOVE;
-                        }
-                        else {
+                        } else {
                             $action = $indexer->getIndexAction($indexableEntity, $type);
                         }
 
-                        switch($action) {
+                        switch ($action) {
                             case IndexerInterface::ACTION_ADD:
                                 $indexer->addIndex($indexableEntity, $type);
                                 break;
@@ -171,7 +149,6 @@ class Service implements ServiceInterface
                                 break;
                         }
                     }
-
                 }
             }
         }
@@ -182,12 +159,12 @@ class Service implements ServiceInterface
         foreach ($this->indexes as $indexName => $indexParams) {
             $index = $this->client->getIndex($indexName);
             foreach ($this->indexers as $indexerAlias => $indexer) {
-                if($indexer->supports($entity)) {
+                if ($indexer->supports($entity)) {
                     $type = $index->getType($indexerAlias);
                     $indexableEntities = $indexer->getIndexableEntities($entity);
                     foreach ($indexableEntities as $indexableEntity) {
-                        if($indexableEntity->getId() !== null) {
-                            if (get_class($entity) === get_class($indexableEntity)) {
+                        if (null !== $indexableEntity->getId()) {
+                            if (\get_class($entity) === \get_class($indexableEntity)) {
                                 $indexer->removeIndexById($indexableEntity->getId(), $type);
                             } else {
                                 // Special case: a managed entity has been removed, but
@@ -198,29 +175,29 @@ class Service implements ServiceInterface
                             }
                         }
                     }
-
                 }
             }
         }
     }
 
     /**
-     * Perform a simple search on the given index and types
+     * Perform a simple search on the given index and types.
      *
-     * @param string $query
-     * @param string|array $index
-     * @param array $types
+     * @param string         $query
+     * @param string|array   $index
+     * @param array          $types
      * @param array|int|null $options
+     *
      * @return ResultSet
      */
     public function search($query, $index, $types = null, $options = null)
     {
         $search = new Search($this->client);
 
-        if (!is_array($index)) {
+        if (!\is_array($index)) {
             $index = [$index];
         }
-        if($types === null) {
+        if (null === $types) {
             $types = array_keys($this->indexers);
         }
 
@@ -229,24 +206,26 @@ class Service implements ServiceInterface
         }
 
         $search->addTypes($types);
+
         return $search->search($query, $options);
     }
 
     /**
-     * @param string $query
-     * @param string $index
-     * @param null|array $types
-     * @param bool $fullResult
+     * @param string     $query
+     * @param string     $index
+     * @param array|null $types
+     * @param bool       $fullResult
+     *
      * @return ResultSet|int
      */
     public function count($query, $index, $types = null, $fullResult = false)
     {
         $search = new Search($this->client);
 
-        if (!is_array($index)) {
+        if (!\is_array($index)) {
             $index = [$index];
         }
-        if($types === null) {
+        if (null === $types) {
             $types = array_keys($this->indexers);
         }
 
@@ -255,22 +234,24 @@ class Service implements ServiceInterface
         }
 
         $search->addTypes($types);
+
         return $search->count($query, $fullResult);
     }
 
     /**
-     * Register an index
+     * Register an index.
      *
-     * @param string $alias
+     * @param string                   $alias
      * @param Indexer\IndexerInterface $indexer
+     *
      * @throws \UnexpectedValueException
      */
     public function registerIndexer($alias, IndexerInterface $indexer)
     {
-        foreach($indexer->getManagedClasses() as $managedClass) {
-            if(!class_exists($managedClass)) {
+        foreach ($indexer->getManagedClasses() as $managedClass) {
+            if (!class_exists($managedClass)) {
                 $message = 'Invalid managed class "%s" provided in indexer "%s"';
-                throw new \UnexpectedValueException(sprintf($message, $managedClass, get_class($indexer)));
+                throw new \UnexpectedValueException(sprintf($message, $managedClass, \get_class($indexer)));
             }
         }
 
@@ -278,7 +259,7 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Return all indexers
+     * Return all indexers.
      *
      * @return array
      */
@@ -288,21 +269,34 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Set indexes
-     *
-     * @param array $indexes
+     * Set indexes.
      */
     public function setIndexes(array $indexes)
     {
         $namespacedIndexes = [];
-        foreach($indexes as $indexName => $indexParams) {
+        foreach ($indexes as $indexName => $indexParams) {
             $namespacedIndexes[$this->addNamespace($indexName)] = $indexParams;
         }
         $this->indexes = $namespacedIndexes;
     }
 
-    private function addNamespace($indexName) {
-        return $this->namespace . '.' . $indexName;
+    /**
+     * Create types associated with the given index.
+     */
+    protected function createTypes(Index $index)
+    {
+        foreach ($this->indexers as $indexerAlias => $indexer) {
+            $type = $index->getType($indexerAlias);
+
+            $mapping = new Mapping();
+            $mapping->setType($type);
+            $mapping->setProperties($indexer->getMappings());
+            $mapping->send();
+        }
     }
 
+    private function addNamespace($indexName)
+    {
+        return $this->namespace . '.' . $indexName;
+    }
 }

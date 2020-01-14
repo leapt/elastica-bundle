@@ -7,7 +7,7 @@ use Elastica\Type;
 use Leapt\ElasticaBundle\Indexer\IndexerInterface;
 
 /**
- * Mock indexers for unit tests
+ * Mock indexers for unit tests.
  */
 class FooIndexer implements IndexerInterface
 {
@@ -17,7 +17,7 @@ class FooIndexer implements IndexerInterface
             'Leapt\ElasticaBundle\Tests\Listener\Mock\FooEntity',
             // Notice the lowercased entity name - we actually want to test this... should work even if the actual
             // class name is BazEntity with a capital E
-            'Leapt\ElasticaBundle\Tests\Listener\Mock\Bazentity'
+            'Leapt\ElasticaBundle\Tests\Listener\Mock\Bazentity',
         ];
     }
 

@@ -3,8 +3,8 @@
 namespace Leapt\ElasticaBundle;
 
 use Leapt\ElasticaBundle\DependencyInjection\Compiler\IndexerCompilerPass;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class LeaptElasticaBundle extends Bundle
 {
