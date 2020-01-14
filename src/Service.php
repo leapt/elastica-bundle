@@ -111,8 +111,7 @@ class Service implements ServiceInterface
             $mapping->send();
 
             // Reindex data
-            $entities = $indexer->getEntitiesToIndex($this->container->get('doctrine.orm.entity_manager'), $type);
-            foreach ($entities as $entity) {
+            foreach ($indexer->getEntitiesToIndex($this->container->get('doctrine.orm.entity_manager'), $type) as $entity) {
                 $indexer->addIndex($entity, $type);
             }
             $this->container->get('doctrine.orm.entity_manager')->clear();

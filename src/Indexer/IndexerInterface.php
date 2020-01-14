@@ -52,12 +52,12 @@ interface IndexerInterface
     public function getIndexAction($entity, Type $type): string;
 
     /**
-     * Return an array of all the entities that need to be reindexed
+     * Return an iterable of all the entities that need to be reindexed
      * during a rebuild operation.
      *
      * @abstract
      */
-    public function getEntitiesToIndex(EntityManager $em, Type $type): array;
+    public function getEntitiesToIndex(EntityManager $em, Type $type): iterable;
 
     /**
      * Get the entities to index provided a given entity

@@ -31,7 +31,7 @@ class FooIndexer implements IndexerInterface
         return '';
     }
 
-    public function getEntitiesToIndex(EntityManager $em, Type $type): array
+    public function getEntitiesToIndex(EntityManager $em, Type $type): iterable
     {
         return [];
     }
