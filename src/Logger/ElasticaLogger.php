@@ -4,10 +4,6 @@ namespace Leapt\ElasticaBundle\Logger;
 
 use Psr\Log\LoggerInterface;
 
-/**
- * Class ElasticaLogger
- * @package Leapt\ElasticaBundle\Logger
- */
 class ElasticaLogger implements LoggerInterface
 {
     /**
@@ -21,16 +17,10 @@ class ElasticaLogger implements LoggerInterface
     protected $queries = [];
 
     /**
-     * @var boolean
+     * @var bool
      */
     protected $debug;
 
-    /**
-     * Constructor.
-     *
-     * @param LoggerInterface|null $logger The Symfony logger
-     * @param boolean              $debug
-     */
     public function __construct(LoggerInterface $logger = null, $debug = false)
     {
         $this->logger = $logger;
@@ -68,27 +58,20 @@ class ElasticaLogger implements LoggerInterface
 
     /**
      * Returns the number of queries that have been logged.
-     *
-     * @return integer The number of queries logged
      */
-    public function getNbQueries()
+    public function getNbQueries(): int
     {
         return count($this->queries);
     }
 
     /**
      * Returns a human-readable array of queries logged.
-     *
-     * @return array An array of queries
      */
-    public function getQueries()
+    public function getQueries(): array
     {
         return $this->queries;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function emergency($message, array $context = [])
     {
         return $this->logger->emergency($message, $context);

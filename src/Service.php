@@ -11,8 +11,6 @@ use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 
 /**
  * This service class is the main entry point for Elastica operations
- *
- * @package Leapt\ElasticaBundle
  */
 class Service implements ServiceInterface
 {

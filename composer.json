@@ -25,13 +25,21 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.4",
-        "ruflin/elastica": "^2.2"
+        "php": "^7.2",
+        "doctrine/orm": "^2.5",
+        "ruflin/elastica": "^2.2",
+        "symfony/config": "^4.4|^5.0",
+        "symfony/console": "^4.4|^5.0",
+        "symfony/dependency-injection": "^4.4|^5.0",
+        "symfony/http-foundation": "^4.4|^5.0",
+        "symfony/http-kernel": "^4.4|^5.0",
+        "symfony/stopwatch": "^4.4|^5.0"
     },
     "require-dev": {
-        "symfony/symfony": "2.6.*",
-        "phpunit/phpunit": "4.6.*",
-        "doctrine/orm": "2.5.*"
+        "phpunit/phpunit": "^8.5"
+    },
+    "suggest": {
+        "leapt/core-bundle": "Allows usage of Paginator"
     },
     "autoload": {
         "psr-4": {

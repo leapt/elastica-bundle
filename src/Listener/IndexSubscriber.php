@@ -10,8 +10,6 @@ use Leapt\ElasticaBundle\ServiceInterface;
 /**
  * This subscriber class listens to Doctrine events and, depending on the registered indexers, automatically
  * triggers index/unindex operations
- *
- * @package Leapt\ElasticaBundle\Listener
  */
 class IndexSubscriber implements EventSubscriber
 {
@@ -41,40 +39,31 @@ class IndexSubscriber implements EventSubscriber
     public function __construct(ServiceInterface $elastica)
     {
         $this->elastica = $elastica;
-        foreach ($elastica->getIndexers() as $indexer) {
-            $this->managedClasses = array_merge($this->managedClasses, $indexer->getManagedClasses());
+        if (null !== $elastica->getIndexers()) {
+            foreach ($elastica->getIndexers() as $indexer) {
+                $this->managedClasses = array_merge($this->managedClasses, $indexer->getManagedClasses());
+            }
         }
     }
 
     /**
      * Returns an array of events this subscriber wants to listen to.
-     *
-     * @return array
      */
-    public function getSubscribedEvents()
+    public function getSubscribedEvents(): array
     {
         return ['postPersist', 'postUpdate', 'preRemove', 'postFlush'];
     }
 
-    /**
-     * @param \Doctrine\ORM\Event\LifecycleEventArgs $ea
-     */
     public function postPersist(LifecycleEventArgs $ea)
     {
         $this->scheduleForIndexation($ea->getEntity());
     }
 
-    /**
-     * @param \Doctrine\ORM\Event\LifecycleEventArgs $ea
-     */
     public function postUpdate(LifecycleEventArgs $ea)
     {
         $this->scheduleForIndexation($ea->getEntity());
     }
 
-    /**
-     * @param \Doctrine\ORM\Event\LifecycleEventArgs $ea
-     */
     public function preRemove(LifecycleEventArgs $ea)
     {
         $this->scheduleForUnindexation($ea->getEntity());
@@ -82,8 +71,6 @@ class IndexSubscriber implements EventSubscriber
 
     /**
      * We trigger index/unindex operations on postFlush events
-     *
-     * @param PostFlushEventArgs $ea
      */
     public function postFlush(PostFlushEventArgs $ea)
     {
@@ -102,8 +89,6 @@ class IndexSubscriber implements EventSubscriber
 
     /**
      * Schedule the provided entity for an index operation
-     *
-     * @param $entity
      */
     private function scheduleForIndexation($entity)
     {
@@ -115,8 +100,6 @@ class IndexSubscriber implements EventSubscriber
 
     /**
      * Schedule the provided entity for an unindex operation
-     *
-     * @param $entity
      */
     private function scheduleForUnindexation($entity)
     {
@@ -128,15 +111,12 @@ class IndexSubscriber implements EventSubscriber
 
     /**
      * Determines if the provided entity is managed by the Elastica subscriber
-     *
-     * @param object $entity
-     * @return bool
      */
-    private function isManaged($entity)
+    private function isManaged($entity): bool
     {
         $managed = false;
 
-        if(in_array(get_class($entity), $this->managedClasses)) {
+        if (\in_array(get_class($entity), $this->managedClasses, true)) {
             $managed = true;
         }
 

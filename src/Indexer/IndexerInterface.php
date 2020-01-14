@@ -5,16 +5,12 @@ namespace Leapt\ElasticaBundle\Indexer;
 use Doctrine\ORM\EntityManager;
 use Elastica\Type;
 
-/**
- * Interface IndexerInterface
- * @package Leapt\ElasticaBundle\Indexer
- */
 interface IndexerInterface
 {
 
-    const ACTION_REMOVE = 'remove';
-    const ACTION_ADD = 'add';
-    const ACTION_NONE = 'none';
+    public const ACTION_REMOVE = 'remove';
+    public const ACTION_ADD = 'add';
+    public const ACTION_NONE = 'none';
 
     /**
      * Return an array of classes managed by this indexer
@@ -25,7 +21,7 @@ interface IndexerInterface
      * @abstract
      * @return array
      */
-    public function getManagedClasses();
+    public function getManagedClasses(): array;
 
     /**
      * Check if the passed entity can be managed by this indexer
@@ -34,7 +30,7 @@ interface IndexerInterface
      * @param object $entity
      * @return bool
      */
-    public function supports($entity);
+    public function supports($entity): bool;
 
     /**
      * Return a mapping array
@@ -44,7 +40,7 @@ interface IndexerInterface
      * @abstract
      * @return mixed
      */
-    public function getMappings();
+    public function getMappings(): array;
 
     /**
      * Return of the ACTION_* constants depending on the provided entity
@@ -55,7 +51,7 @@ interface IndexerInterface
      * @param Type $type
      * @return string
      */
-    public function getIndexAction($entity, Type $type);
+    public function getIndexAction($entity, Type $type): string;
 
     /**
      * Return an array of all the entities that need to be reindexed
@@ -66,7 +62,7 @@ interface IndexerInterface
      * @param Type $type
      * @return array
      */
-    public function getEntitiesToIndex(EntityManager $em, Type $type);
+    public function getEntitiesToIndex(EntityManager $em, Type $type): array;
 
     /**
      * Get the entities to index provided a given entity
@@ -78,7 +74,7 @@ interface IndexerInterface
      * @param object $entity
      * @return array
      */
-    public function getIndexableEntities($entity);
+    public function getIndexableEntities($entity): array;
 
     /**
      * Determine the elasticsearch document identifier
@@ -97,7 +93,7 @@ interface IndexerInterface
      * @param Type $type
      * @return array
      */
-    public function map($entity, Type $type);
+    public function map($entity, Type $type): array;
 
     /**
      * Add (or update) an elasticsearch document for the provided entity
@@ -106,7 +102,7 @@ interface IndexerInterface
      * @param object $entity
      * @param Type $type
      */
-    public function addIndex($entity, Type $type);
+    public function addIndex($entity, Type $type): void;
 
     /**
      * Remove (if existing) the elasticsearch document for the provided entity
@@ -115,7 +111,7 @@ interface IndexerInterface
      * @param object $entity
      * @param Type $type
      */
-    public function removeIndex($entity, Type $type);
+    public function removeIndex($entity, Type $type): void;
 
     /**
      * Remove (if existing) the elasticsearch document for the provided id
@@ -124,13 +120,10 @@ interface IndexerInterface
      * @param integer $id
      * @param Type $type
      */
-    public function removeIndexById($id, Type $type);
+    public function removeIndexById($id, Type $type): void;
 
     /**
      * Store the entity manager
-     *
-     * @abstract
-     * @param \Doctrine\ORM\EntityManager $em
      */
-    public function setEntityManager(EntityManager $em);
+    public function setEntityManager(EntityManager $em): void;
 }

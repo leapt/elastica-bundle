@@ -7,10 +7,6 @@ use Elastica\Document;
 use Elastica\Exception\NotFoundException;
 use Elastica\Type;
 
-/**
- * Class AbstractIndexer
- * @package Leapt\ElasticaBundle\Indexer
- */
 abstract class AbstractIndexer implements IndexerInterface
 {
 
@@ -19,15 +15,11 @@ abstract class AbstractIndexer implements IndexerInterface
      */
     protected $em;
 
-    /**
-     * @param $entity
-     * @return bool
-     */
-    public function supports($entity)
+    public function supports($entity): bool
     {
         $supports = false;
 
-        if(in_array(get_class($entity), $this->getManagedClasses())) {
+        if (\in_array(get_class($entity), $this->getManagedClasses(), true)) {
             $supports = true;
         }
 
@@ -43,48 +35,28 @@ abstract class AbstractIndexer implements IndexerInterface
         return $supports;
     }
 
-    /**
-     * @param object $entity
-     * @return array
-     */
-    public function getIndexableEntities($entity)
+    public function getIndexableEntities($entity): array
     {
         return [$entity];
     }
 
-    /**
-     * @param object $entity
-     * @return mixed
-     */
     public function getDocumentIdentifier($entity)
     {
         return $entity->getId();
     }
 
-    /**
-     * @param object $entity
-     * @param Type $type
-     */
-    public function addIndex($entity, Type $type)
+    public function addIndex($entity, Type $type): void
     {
         $document = new Document($this->getDocumentIdentifier($entity), $this->map($entity, $type));
         $type->addDocument($document);
     }
 
-    /**
-     * @param object $entity
-     * @param Type $type
-     */
-    public function removeIndex($entity, Type $type)
+    public function removeIndex($entity, Type $type): void
     {
         $this->removeIndexById($this->getDocumentIdentifier($entity), $type);
     }
 
-    /**
-     * @param integer $id
-     * @param Type $type
-     */
-    public function removeIndexById($id, Type $type)
+    public function removeIndexById($id, Type $type): void
     {
         try {
             $type->deleteById($id);
@@ -93,12 +65,8 @@ abstract class AbstractIndexer implements IndexerInterface
         catch(NotFoundException $e){}
     }
 
-    /**
-     * @param \Doctrine\ORM\EntityManager $em
-     */
-    public function setEntityManager(EntityManager $em)
+    public function setEntityManager(EntityManager $em): void
     {
         $this->em = $em;
     }
-
 }

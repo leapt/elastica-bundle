@@ -4,11 +4,6 @@ namespace Leapt\ElasticaBundle;
 
 use Leapt\ElasticaBundle\Indexer\IndexerInterface;
 
-/**
- * Interface ServiceInterface
- *
- * @package Leapt\ElasticaBundle
- */
 interface ServiceInterface
 {
     /**

@@ -7,10 +7,6 @@ use Elastica\Request;
 use Leapt\ElasticaBundle\Logger\ElasticaLogger;
 use Symfony\Component\Stopwatch\Stopwatch;
 
-/**
- * Class Client
- * @package Leapt\ElasticaBundle
- */
 class Client extends BaseClient
 {
     /**

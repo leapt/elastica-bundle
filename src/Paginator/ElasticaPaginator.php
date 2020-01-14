@@ -7,10 +7,6 @@ use Elastica\ResultSet;
 use Leapt\CoreBundle\Paginator\AbstractPaginator;
 use Leapt\ElasticaBundle\ServiceInterface;
 
-/**
- * Class ElasticaPaginator
- * @package Leapt\ElasticaBundle\Paginator
- */
 class ElasticaPaginator extends AbstractPaginator
 {
     /**

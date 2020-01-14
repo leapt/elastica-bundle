@@ -8,16 +8,20 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-/**
- * Class RebuildCommand
- * @package Leapt\ElasticaBundle\Command
- */
 class RebuildCommand extends Command
 {
-    /** @var Service */
+    /**
+     * @var Service
+     */
     protected $elastica;
 
-    protected function configure()
+    public function __construct(Service $service)
+    {
+        parent::__construct();
+        $this->elastica = $service;
+    }
+
+    protected function configure(): void
     {
         $this
             ->setName('leapt:elastica:rebuild')
@@ -26,12 +30,7 @@ class RebuildCommand extends Command
         ;
     }
 
-    /**
-     * @param InputInterface $input
-     * @param OutputInterface $output
-     * @return void
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $timeStart = microtime(true);
 
@@ -52,14 +51,7 @@ class RebuildCommand extends Command
 
         $time = number_format(microtime(true) - $timeStart, 3);
         $output->writeln('Rebuilt indexes in ' . $time . ' seconds.');
-    }
 
-    /**
-     * @param Service $elastica
-     * @required
-     */
-    public function setElasticaService(Service $elastica): void
-    {
-        $this->elastica = $elastica;
+        return 0;
     }
 }
