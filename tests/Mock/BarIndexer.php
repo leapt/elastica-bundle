@@ -18,56 +18,51 @@ class BarIndexer implements IndexerInterface
 
     public function supports($entity): bool
     {
-        // TODO: Implement supports() method.
+        return true;
     }
 
     public function getMappings(): array
     {
-        // TODO: Implement getMappings() method.
+        return [];
     }
 
     public function getIndexAction($entity, Type $type): string
     {
-        // TODO: Implement getIndexAction() method.
+        return '';
     }
 
     public function getEntitiesToIndex(EntityManager $em, Type $type): array
     {
-        // TODO: Implement getEntitiesToIndex() method.
+        return [];
     }
 
     public function getIndexableEntities($entity): array
     {
-        // TODO: Implement getIndexableEntities() method.
+        return [];
     }
 
     public function getDocumentIdentifier($entity)
     {
-        // TODO: Implement getDocumentIdentifier() method.
     }
 
     public function map($entity, Type $type): array
     {
-        // TODO: Implement map() method.
+        return [];
     }
 
     public function addIndex($entity, Type $type): void
     {
-        // TODO: Implement addIndex() method.
     }
 
     public function removeIndex($entity, Type $type): void
     {
-        // TODO: Implement removeIndex() method.
     }
 
     public function removeIndexById($id, Type $type): void
     {
-        // TODO: Implement removeIndexById() method.
     }
 
     public function setEntityManager(EntityManager $em): void
     {
-        // TODO: Implement setEntityManager() method.
     }
 }
